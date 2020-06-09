@@ -1,0 +1,38 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+    <a class="navbar-brand" href="#">Honey Store</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainmenu">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link active" [routerLink]="['']"> Dashboard </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"> something </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"> something </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"> something </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"> something </a>
+            </li>
+        </ul>
+
+        <form class="form-inline">
+            <input class="form-control" type="search" placeholder="Wyszukaj" aria-label="Wyszukaj">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                    <fa-icon [icon]="faSearch"></fa-icon>
+                </button>
+            </div>
+        </form>
+    </div>
+</nav>
+
+<router-outlet></router-outlet>
