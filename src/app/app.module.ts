@@ -9,12 +9,14 @@ import { HomeComponent } from './user/home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ChartsModule } from 'ng2-charts';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
-import { DataTableComponent } from './admin/data-table/data-table.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AreaChartComponent } from './admin/statistics/charts/area-chart/area-chart.component';
 import { BarChartComponent } from './admin/statistics/charts/bar-chart/bar-chart.component';
 import { HoneyCardsComponent } from './admin/statistics/honey-cards/honey-cards.component';
 import { HoneyModalComponent } from './admin/honey-modal/honey-modal.component';
+import { OrdersComponent } from './admin/orders/orders.component';
+import { OrdersTableComponent } from './admin/data-tables/orders-table/orders-table.component';
+import { AllOrdersTableComponent } from './admin/data-tables/all-orders-table/all-orders-table.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,13 @@ import { HoneyModalComponent } from './admin/honey-modal/honey-modal.component';
     NavComponent,
     HomeComponent,
     DashboardComponent,
-    DataTableComponent,
+    AllOrdersTableComponent,
     AreaChartComponent,
     BarChartComponent,
     HoneyCardsComponent,
-    HoneyModalComponent
+    HoneyModalComponent,
+    OrdersComponent,
+    OrdersTableComponent,
   ],
   imports: [
     BrowserModule,

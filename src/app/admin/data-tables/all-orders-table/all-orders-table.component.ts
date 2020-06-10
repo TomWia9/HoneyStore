@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
-import { Order } from './orders/order';
-import { ORDERS } from './orders/orders';
+import { Order } from '../orders/order';
+import { ORDERS } from '../orders/orders';
 import { faTable } from '@fortawesome/free-solid-svg-icons';
 
 const ORDERS_LIST = ORDERS;
 
 @Component({
-  selector: 'app-data-table',
-  templateUrl: './data-table.component.html',
-  styleUrls: ['./data-table.component.css'],
+  selector: 'app-all-orders-table',
+  templateUrl: './all-orders-table.component.html',
+  styleUrls: ['./all-orders-table.component.css'],
   providers: []
 })
-export class DataTableComponent {
+export class AllOrdersTableComponent {
   page = 1;
   pageSize = 4;
   collectionSize = ORDERS_LIST.length;

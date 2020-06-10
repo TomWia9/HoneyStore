@@ -3,7 +3,7 @@ import {Order} from './order';
 export const ORDERS: Order[] = [
   {
     id: 1,
-    status: 'Sent',
+    status: 'Shipped',
     honeyName: 'Basswood Honey',
     firstName: 'Tomasz',
     lastName: 'Wiatrowski',
@@ -14,7 +14,7 @@ export const ORDERS: Order[] = [
   },
   {
     id: 2,
-    status: 'Packed up',
+    status: 'Shipped',
     honeyName: 'Avocado Honey',
     firstName: 'Karolina',
     lastName: 'Chruścińska',
@@ -36,7 +36,7 @@ export const ORDERS: Order[] = [
   },
   {
     id: 4,
-    status: 'Sent',
+    status: 'Shipped',
     honeyName: 'Basswood Honey',
     firstName: 'Karolina',
     lastName: 'Wiatrowska',
@@ -47,7 +47,7 @@ export const ORDERS: Order[] = [
   },
   {
     id: 5,
-    status: 'Sent',
+    status: 'New',
     honeyName: 'Basswood Honey',
     firstName: 'Tomasz',
     lastName: 'Wiatrowski',
@@ -58,7 +58,7 @@ export const ORDERS: Order[] = [
   },
   {
     id: 6,
-    status: 'Sent',
+    status: 'Delivered',
     honeyName: 'Basswood Honey',
     firstName: 'Tomasz',
     lastName: 'Wiatrowski',
@@ -69,7 +69,7 @@ export const ORDERS: Order[] = [
   },
   {
     id: 7,
-    status: 'Sent',
+    status: 'Shipped',
     honeyName: 'Basswood Honey',
     firstName: 'Tomasz',
     lastName: 'Wiatrowski',
