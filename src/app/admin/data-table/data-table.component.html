@@ -1,0 +1,48 @@
+<div class="card-header">
+    <fa-icon [icon]="faTable"></fa-icon>
+    Tabela zamówień
+    <div class="card-body">
+        <div class="table-responsive">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Honey name</th>
+                        <th scope="col">Buyer first name</th>
+                        <th scope="col">Buyer last name</th>
+                        <th scope="col">Cost</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Total cost</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let order of orders; index as i">
+                        <th scope="row">{{ i + 1 }}</th>
+                        <td> {{ order.status }} </td>
+                        <td> {{ order.honeyName }}</td>
+                        <td>{{ order.firstName }} </td>
+                        <td>{{ order.lastName }}</td>
+                        <td>{{ order.cost | number }}</td>
+                        <td>{{ order.amount | number }} </td>
+                        <td>{{ order.totalCost | number }} </td>
+                        <td> {{ order.date }} </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="d-flex justify-content-between p-2">
+                <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize">
+                </ngb-pagination>
+
+                <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">
+      <option [ngValue]="2">2 items per page</option>
+      <option [ngValue]="4">4 items per page</option>
+      <option [ngValue]="6">6 items per page</option>
+    </select>
+            </div>
+        </div>
+    </div>
+</div>
