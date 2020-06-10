@@ -7,8 +7,8 @@
                 'bg-warning': honey.amount >=100 && honey.amount < 500,
                 'bg-danger': honey.amount < 100 }">
                 <div class="card-body">{{ honey.name }}</div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link" href="#">View Details</a>
+                <div class="card-footer d-flex align-items-center justify-content-between" (click)="open(honey)" role="button">
+                    <a class="small text-white">View Details</a>
                     <div class="small text-white">
                         <fa-icon [icon]="faAngleRight"></fa-icon>
                     </div>

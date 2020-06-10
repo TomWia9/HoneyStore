@@ -14,6 +14,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AreaChartComponent } from './admin/statistics/charts/area-chart/area-chart.component';
 import { BarChartComponent } from './admin/statistics/charts/bar-chart/bar-chart.component';
 import { HoneyCardsComponent } from './admin/statistics/honey-cards/honey-cards.component';
+import { HoneyModalComponent } from './admin/honey-modal/honey-modal.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HoneyCardsComponent } from './admin/statistics/honey-cards/honey-cards.
     DataTableComponent,
     AreaChartComponent,
     BarChartComponent,
-    HoneyCardsComponent
+    HoneyCardsComponent,
+    HoneyModalComponent
   ],
   imports: [
     BrowserModule,
