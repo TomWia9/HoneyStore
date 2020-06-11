@@ -17,6 +17,7 @@ import { HoneyModalComponent } from './admin/honey-modal/honey-modal.component';
 import { OrdersComponent } from './admin/orders/orders.component';
 import { OrdersTableComponent } from './admin/data-tables/orders-table/orders-table.component';
 import { AllOrdersTableComponent } from './admin/data-tables/all-orders-table/all-orders-table.component';
+import { OrderModalComponent } from './admin/order-modal/order-modal.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AllOrdersTableComponent } from './admin/data-tables/all-orders-table/al
     HoneyModalComponent,
     OrdersComponent,
     OrdersTableComponent,
+    OrderModalComponent,
   ],
   imports: [
     BrowserModule,

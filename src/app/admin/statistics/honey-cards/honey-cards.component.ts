@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Honey } from './honey';
+import { Honey } from '../../../shared/honey';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HoneyModalComponent } from '../../honey-modal/honey-modal.component';
@@ -27,8 +27,6 @@ export class HoneyCardsComponent implements OnInit {
   }
 
   open(honey: Honey) {
-    console.log(honey);
-    
     const modalRef = this.modalService.open(HoneyModalComponent);
     modalRef.componentInstance.honeyName = honey.name;
     modalRef.componentInstance.amount = honey.amount;

@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { faTable } from '@fortawesome/free-solid-svg-icons';
 import { ORDERS } from '../orders/orders';
-import { Order } from '../orders/order';
+import { Order } from '../../../shared/order';
+import { OrderModalComponent } from '../../order-modal/order-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 const ORDERS_LIST = ORDERS;
 
@@ -19,6 +21,8 @@ export class OrdersTableComponent implements OnInit{
   collectionSize: number;
   faTable = faTable;
 
+  constructor(private modalService: NgbModal){}
+
   ngOnInit(): void {
     ORDERS_LIST.forEach(order => {
       if(order.status === this.status){
@@ -32,6 +36,11 @@ export class OrdersTableComponent implements OnInit{
     return this.ordersList
       .map((order, i) => ({id: i + 1, ...order}))
       .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+  }
+
+  open(order: Order){
+    const modalRef = this.modalService.open(OrderModalComponent, { size: 'xl', scrollable: true });
+    modalRef.componentInstance.order = order;
   }
 
 }

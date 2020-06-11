@@ -1,0 +1,64 @@
+<div class="modal-header">
+    <h2 class="modal-title"> Order nr: {{ order.id }}</h2>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <h5 class="mb-1">Ordered products</h5>
+                <div class="list-group mb-2">
+                    <ng-container *ngFor="let product of order.products">
+                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                                <div>
+                                    <h6>{{ product.name }}</h6>
+                                    <p class="mb-0">Price: {{ product.price }}</p>
+                                    <p class="mb-0">Amount: {{ product.amount}}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </ng-container>
+
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6>Total payment:</h6>
+                            <h5>$98</h5>
+                        </div>
+                    </a>
+                </div>
+
+                <button class="btn btn-primary">Send the order</button>
+            </div>
+
+            <div class="col-lg-6 mb-4">
+                <h5 class="mb-1">Client data</h5>
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
+                        <h6>Personal data</h6>
+                        <p class="mb-0">{{ order.client.firstName }}</p>
+                        <p class="mb-0">{{ order.client.lastName }}</p>
+                        <p class="mb-0">{{ order.client.email }}</p>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
+                        <h6>Shipping address</h6>
+                        <p class="mb-0">{{ order.client.address.city }}</p>
+                        <p class="mb-0">{{ order.client.address.street }}</p>
+                        <p class="mb-0">{{ order.client.address.postCode }}</p>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
+                        <h6>Delivery and payment</h6>
+                        <p class="mb-0">{{ order.delivery }}</p>
+                        <p class="mb-0">{{ order.payment }}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    </div>

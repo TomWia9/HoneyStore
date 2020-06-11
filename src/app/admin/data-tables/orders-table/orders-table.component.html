@@ -3,7 +3,6 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Honey name</th>
                 <th scope="col">Buyer first name</th>
                 <th scope="col">Buyer last name</th>
                 <th scope="col">Total cost</th>
@@ -11,11 +10,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let order of orders; index as i">
+            <tr *ngFor="let order of orders; index as i" role="button" (click)="open(order)">
                 <th scope="row">{{ i + 1 }}</th>
-                <td> {{ order.honeyName }}</td>
-                <td>{{ order.firstName }} </td>
-                <td>{{ order.lastName }}</td>
+                <td>{{ order.client.firstName }} </td>
+                <td>{{ order.client.lastName }}</td>
                 <td>{{ order.totalCost | number }} </td>
                 <td> {{ order.date }} </td>
             </tr>

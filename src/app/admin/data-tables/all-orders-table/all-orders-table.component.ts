@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Order } from '../orders/order';
+import { Order } from '../../../shared/order';
 import { ORDERS } from '../orders/orders';
 import { faTable } from '@fortawesome/free-solid-svg-icons';
 
