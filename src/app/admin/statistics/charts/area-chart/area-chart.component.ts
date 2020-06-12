@@ -5,23 +5,21 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './area-chart.component.html',
   styleUrls: ['./area-chart.component.css']
 })
-export class AreaChartComponent implements OnInit {
+export class AreaChartComponent {
 
   @Input() chartData: any [];
   @Input() chartLabels: string [];
 
   constructor() { }
 
-  public areaChartData: any[];
-  public areaChartLabels: string[];
-  public areaChartType = 'line';
-  public areaChartLegend = false;
-  public areaChartColors: any[] = [{
+  public chartType = 'line';
+  public chartLegend = false;
+  public chartColors: any[] = [{
       backgroundColor: 'rgba(2,117,216,0.2)',
       borderColor: 'rgba(2,117,216,1)',
 
   }];
-  public areaChartOptions: any = {
+  public chartOptions: any = {
     scaleShowVerticalLines: false,
     responsive: true,
     scales: {
@@ -45,11 +43,5 @@ export class AreaChartComponent implements OnInit {
   }
 
 };
-
-  ngOnInit(): void {
-    this.areaChartData = this.chartData;
-    this.areaChartLabels = this.chartLabels;
-  }
-
 
 }

@@ -1,0 +1,91 @@
+<main>
+    <div class="container">
+        <ol class="breadcrumb mb-4 mt-4">
+            <li class="breadcrumb-item active justify-content-center">
+                <h1 class="h3">Statistics</h1>
+            </li>
+        </ol>
+
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <div class="d-flex w-100 justify-content-between">
+                            <div>
+                                <fa-icon [icon]="faChartPie"></fa-icon>
+                                Pie chart
+                            </div>
+
+                            <div ngbDropdown class="d-inline-block">
+                                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{ toggle }}</button>
+                                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                    <button ngbDropdownItem (click)="change(1, 'Week')">Week</button>
+                                    <button ngbDropdownItem (click)="change(1, 'Month')">Month</button>
+                                    <button ngbDropdownItem (click)="change(1, 'Year')">Year</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <app-pie-chart [chartData]="pieChartData" [chartLabels]="pieChartLabels"></app-pie-chart>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <div class="d-flex w-100 justify-content-between">
+                            <div>
+                                <fa-icon [icon]="faChartBar"></fa-icon>
+                                Bar chart
+                            </div>
+
+                            <div ngbDropdown class="d-inline-block">
+                                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{ toggle }}</button>
+                                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                    <button ngbDropdownItem (click)="change(2, 'Week')">Week</button>
+                                    <button ngbDropdownItem (click)="change(2, 'Month')">Month</button>
+                                    <button ngbDropdownItem (click)="change(3, 'Year')">Year</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <app-bar-chart [chartData]="barChartData" [chartLabels]="barChartLabels"></app-bar-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <div class="d-flex w-100 justify-content-between">
+                            <div>
+                                <fa-icon [icon]="faChartArea"></fa-icon>
+                                Daily area chart
+                            </div>
+
+                            <div ngbDropdown class="d-inline-block">
+                                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{ toggle }}</button>
+                                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                    <button ngbDropdownItem (click)="change(3, 'Week')">Week</button>
+                                    <button ngbDropdownItem (click)="change(3, 'Month')">Month</button>
+                                    <button ngbDropdownItem (click)="change(3, 'Year')">Year</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <app-area-chart [chartData]="areaChartData" [chartLabels]="areaChartLabels"></app-area-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>

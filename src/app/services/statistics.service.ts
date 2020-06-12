@@ -17,6 +17,13 @@ export class StatisticsService {
 
   SAMPLE_BARCHART_LABELS: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
 
+  SAMPLE_PIECHART_DATA: any[] = [12.21, 15.58, 11.25, 8.32];
+  SAMPLE_PIECHART_DATA_MONTH: any[] = [112.21, 115.58, 111.25, 81.32];
+
+
+  SAMPLE_PIECHART_LABELS: string[] = ['Honey 1', 'Honey 2', 'Honey 3', 'Honey 4'];
+  
+
 
   constructor() { }
 
@@ -34,6 +41,18 @@ export class StatisticsService {
 
   getBarChartLabels(){
     return this.SAMPLE_BARCHART_LABELS.slice();
+  }
+
+  getPieChartData(){
+    return this.SAMPLE_PIECHART_DATA.slice();
+  }
+
+  getPieChartDataMonth(){
+    return this.SAMPLE_PIECHART_DATA_MONTH.slice();
+  }
+
+  getPieChartLabels(){
+    return this.SAMPLE_PIECHART_LABELS.slice();
   }
 
 

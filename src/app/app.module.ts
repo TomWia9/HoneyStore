@@ -12,12 +12,14 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AreaChartComponent } from './admin/statistics/charts/area-chart/area-chart.component';
 import { BarChartComponent } from './admin/statistics/charts/bar-chart/bar-chart.component';
-import { HoneyCardsComponent } from './admin/statistics/honey-cards/honey-cards.component';
 import { HoneyModalComponent } from './admin/honey-modal/honey-modal.component';
 import { OrdersComponent } from './admin/orders/orders.component';
 import { OrdersTableComponent } from './admin/data-tables/orders-table/orders-table.component';
 import { AllOrdersTableComponent } from './admin/data-tables/all-orders-table/all-orders-table.component';
 import { OrderModalComponent } from './admin/order-modal/order-modal.component';
+import { StatisticsComponent } from './admin/statistics/statistics.component';
+import { HoneyCardsComponent } from './admin/dashboard/honey-cards/honey-cards.component';
+import { PieChartComponent } from './admin/statistics/charts/pie-chart/pie-chart.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { OrderModalComponent } from './admin/order-modal/order-modal.component';
     OrdersComponent,
     OrdersTableComponent,
     OrderModalComponent,
+    StatisticsComponent,
+    PieChartComponent,
   ],
   imports: [
     BrowserModule,
