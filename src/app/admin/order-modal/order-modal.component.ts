@@ -13,4 +13,9 @@ export class OrderModalComponent {
 
   constructor(public activeModal: NgbActiveModal) {}
 
+  onSend(){
+    //ordersService.changeStatus(order.id, 'Shipped');
+    console.log('Order shipped');
+  }
+
 }

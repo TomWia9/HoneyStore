@@ -26,12 +26,12 @@
                     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                         <div class="d-flex w-100 justify-content-between">
                             <h6>Total payment:</h6>
-                            <h5>$98</h5>
+                            <h5>${{ order.totalCost }}</h5>
                         </div>
                     </a>
                 </div>
 
-                <button class="btn btn-primary">Send the order</button>
+                <button class="btn btn-primary" *ngIf="order.status === 'New'" (click)="onSend()">Send the order</button>
             </div>
 
             <div class="col-lg-6 mb-4">

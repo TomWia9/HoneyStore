@@ -20,7 +20,7 @@
         </tbody>
     </table>
 
-    <div class="d-flex justify-content-between p-2">
+    <div class="d-flex justify-content-between p-2" [ngClass]="{'success': status === 'Delivered', 'warning': status === 'Shipped', 'primary': status === 'New'}">
         <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize">
         </ngb-pagination>
         <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">

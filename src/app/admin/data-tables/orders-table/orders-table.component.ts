@@ -30,6 +30,11 @@ export class OrdersTableComponent implements OnInit{
       }
     });
     this.collectionSize = this.ordersList.length;
+    this.ordersList.forEach(order => {
+      order.products.forEach(product => {
+        order.totalCost += product.price;
+      });
+    });
   }
 
   get orders(): Order[] {

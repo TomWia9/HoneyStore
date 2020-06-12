@@ -1,13 +1,13 @@
 import { Honey } from './honey';
 import { Client } from 'src/app/shared/client';
 
-export interface Order {
+export class Order {
     id: number;
     status: string;
     client: Client;
     products: Honey[];
     // amount: number; (products.length)
-    totalCost: number;
+    totalCost = 0;
     delivery: string;
     payment: string;
     date: string;

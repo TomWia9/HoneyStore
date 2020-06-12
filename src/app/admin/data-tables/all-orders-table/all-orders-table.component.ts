@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Order } from '../../../shared/order';
 import { ORDERS } from '../orders/orders';
 import { faTable } from '@fortawesome/free-solid-svg-icons';
@@ -11,11 +11,19 @@ const ORDERS_LIST = ORDERS;
   styleUrls: ['./all-orders-table.component.css'],
   providers: []
 })
-export class AllOrdersTableComponent {
+export class AllOrdersTableComponent implements OnInit {
   page = 1;
   pageSize = 4;
   collectionSize = ORDERS_LIST.length;
   faTable = faTable;
+
+  ngOnInit(): void {
+    ORDERS_LIST.forEach(order => {
+      order.products.forEach(product => {
+        order.totalCost += product.price;
+      });
+    });
+  }
 
   get orders(): Order[] {
     return ORDERS_LIST
