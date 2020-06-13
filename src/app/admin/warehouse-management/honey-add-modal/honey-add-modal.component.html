@@ -1,0 +1,29 @@
+<div class="modal-header">
+    <h2 class="modal-title"> Add new honey</h2>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="form" (submit)="onSubmit(form.value)" class="mb-4">
+        <div class="form-group">
+            <label for="inputName">Honey name</label>
+            <input formControlName="honeyName" type="text" class="form-control" id="inputName" aria-describedby="name" placeholder="Enter honey name" required>
+        </div>
+        <div class="form-group">
+            <label for="inputPrice">Price</label>
+            <input formControlName="honeyPrice" type="number" class="form-control" id="inputPrice" placeholder="Enter price of honey" required>
+        </div>
+        <div class="form-group">
+            <label for="inputImage">Add an image of honey</label>
+            <input formControlName="honeyImage" type="file" class="form-control-file" id="inputImage">
+        </div>
+        <button type="submit" class="btn btn-primary">Add honey</button>
+    </form>
+    <div *ngIf="err === true" class="alert alert-danger mb-4" role="alert">
+        Check if all fields are filled in
+    </div>
+    <div *ngIf="err === false" class="alert alert-success mb-4" role="alert">
+        Successfully added
+    </div>
+</div>

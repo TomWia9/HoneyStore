@@ -1,0 +1,20 @@
+<div class="card mb-4">
+    <div class="card-header bg-primary">
+        Honeys in store
+    </div>
+    <div class="card-body">
+        <div class="list-group" *ngFor="let honey of honeys">
+            <a [routerLink]="['honey', honey.id]" class="list-group-item list-group-item-action justify-content-between d-flex w-100" routerLinkActive="active">
+                <p>{{ honey.name }}</p>
+                <ng-container *ngIf="allowDelete === true">
+                    <fa-icon [icon]="faWindowClose" size="lg" [styles]="{'stroke': '#d9534f', 'color': '#d9534f'}" role="button" (click)="onDelete(honey.id)"></fa-icon>
+                </ng-container>
+            </a>
+
+        </div>
+    </div>
+    <div class="card-footer d-flex align-items-center justify-content-center " role="button">
+        <button class="btn btn-success mx-2" (click)="onAdd()">Add honey</button>
+        <button class="btn btn-danger mx-2" (click)="onAllowDelete()">Delete honey</button>
+    </div>
+</div>

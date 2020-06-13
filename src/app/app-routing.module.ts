@@ -5,6 +5,9 @@ import { NavComponent } from './admin/nav/nav.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { OrdersComponent } from './admin/orders/orders.component';
 import { StatisticsComponent } from './admin/statistics/statistics.component';
+import { WarehouseManagementComponent } from './admin/warehouse-management/warehouse-management.component';
+import { HoneyDetailComponent } from './admin/warehouse-management/honey-detail/honey-detail.component';
+import { HoneyStartComponent } from './admin/warehouse-management/honey-start/honey-start.component';
 
 
 const routes: Routes = [
@@ -13,6 +16,10 @@ const routes: Routes = [
     {path: '', component: DashboardComponent},
     {path: 'orders', component: OrdersComponent},
     {path: 'statistics', component: StatisticsComponent},
+    {path: 'warehouse', component: WarehouseManagementComponent, children: [
+      {path: '', component: HoneyStartComponent},
+      {path: 'honey/:id', component: HoneyDetailComponent}
+    ]},
   ]},
 ];
 

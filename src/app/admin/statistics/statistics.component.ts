@@ -10,7 +10,9 @@ import { StatisticsService } from 'src/app/services/statistics.service';
 })
 export class StatisticsComponent implements OnInit {
 
-  toggle = 'Week';
+  areaChartToggle = 'Week';
+  barChartToggle = 'Week';
+  pieChartToggle = 'Week';
 
   faChartPie = faChartPie;
   faChartBar = faChartBar;
@@ -35,7 +37,22 @@ export class StatisticsComponent implements OnInit {
 
   change(chartID: number, peroid: string){
     console.log('chartID: ' + chartID);
-    this.toggle = peroid;
+
+    switch(chartID){
+      case 1: {
+        this.pieChartToggle = peroid;
+        break;
+      }
+      case 2: {
+        this.barChartToggle = peroid;
+        break;
+      }
+      case 3: {
+        this.areaChartToggle = peroid;
+        break;
+      }
+    }
+
     // switch(chartID) {
     //   case 1: {
     //     this.pieChartData = this.statisticsService.getPieChartDataMonth();

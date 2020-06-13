@@ -20,6 +20,11 @@ import { OrderModalComponent } from './admin/order-modal/order-modal.component';
 import { StatisticsComponent } from './admin/statistics/statistics.component';
 import { HoneyCardsComponent } from './admin/dashboard/honey-cards/honey-cards.component';
 import { PieChartComponent } from './admin/statistics/charts/pie-chart/pie-chart.component';
+import { WarehouseManagementComponent } from './admin/warehouse-management/warehouse-management.component';
+import { HoneyDetailComponent } from './admin/warehouse-management/honey-detail/honey-detail.component';
+import { HoneyStartComponent } from './admin/warehouse-management/honey-start/honey-start.component';
+import { HoneyListComponent } from './admin/warehouse-management/honey-list/honey-list.component';
+import { HoneyAddModalComponent } from './admin/warehouse-management/honey-add-modal/honey-add-modal.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +42,11 @@ import { PieChartComponent } from './admin/statistics/charts/pie-chart/pie-chart
     OrderModalComponent,
     StatisticsComponent,
     PieChartComponent,
+    WarehouseManagementComponent,
+    HoneyDetailComponent,
+    HoneyStartComponent,
+    HoneyListComponent,
+    HoneyAddModalComponent,
   ],
   imports: [
     BrowserModule,
