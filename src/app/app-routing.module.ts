@@ -11,7 +11,9 @@ import { HoneyStartComponent } from './admin/warehouse-management/honey-start/ho
 
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: '', component: HomeComponent, children: [
+    
+  ]},
   {path: 'admin', component: NavComponent, children: [
     {path: '', component: DashboardComponent},
     {path: 'orders', component: OrdersComponent},

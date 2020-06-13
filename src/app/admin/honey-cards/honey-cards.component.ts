@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Honey } from '../../../shared/honey';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { HoneyModalComponent } from '../../honey-modal/honey-modal.component';
+import { HoneyModalComponent } from '../honey-modal/honey-modal.component';
+import { Honey } from 'src/app/shared/honey';
 
 
 @Component({

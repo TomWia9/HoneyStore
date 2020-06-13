@@ -1,0 +1,25 @@
+<div class="row">
+    <ng-container *ngFor="let honey of honeys">
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <a href="#">
+                    <img class="card-img-top" src="http://placehold.it/700x400" alt="">
+                </a>
+                <div class="card-body">
+                    <h4 class="card-title text-primary">
+                        {{ honey.name }}
+                    </h4>
+                    <h5>${{ honey.price }}</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                    <!--honey.desc-->
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between" (click)="onAddToCart(honey)" role="button">
+                    <a>
+                        <h6> Add to cart</h6>
+                    </a>
+                    <fa-icon [icon]="faShoppingCart"></fa-icon>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

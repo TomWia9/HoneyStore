@@ -18,13 +18,15 @@ import { OrdersTableComponent } from './admin/data-tables/orders-table/orders-ta
 import { AllOrdersTableComponent } from './admin/data-tables/all-orders-table/all-orders-table.component';
 import { OrderModalComponent } from './admin/order-modal/order-modal.component';
 import { StatisticsComponent } from './admin/statistics/statistics.component';
-import { HoneyCardsComponent } from './admin/dashboard/honey-cards/honey-cards.component';
 import { PieChartComponent } from './admin/statistics/charts/pie-chart/pie-chart.component';
 import { WarehouseManagementComponent } from './admin/warehouse-management/warehouse-management.component';
 import { HoneyDetailComponent } from './admin/warehouse-management/honey-detail/honey-detail.component';
 import { HoneyStartComponent } from './admin/warehouse-management/honey-start/honey-start.component';
 import { HoneyListComponent } from './admin/warehouse-management/honey-list/honey-list.component';
 import { HoneyAddModalComponent } from './admin/warehouse-management/honey-add-modal/honey-add-modal.component';
+import { NavHomeComponent } from './user/nav-home/nav-home.component';
+import { HoneyCardsComponent } from './admin/honey-cards/honey-cards.component';
+import { HoneyItemsComponent } from './user/honey-items/honey-items.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { HoneyAddModalComponent } from './admin/warehouse-management/honey-add-m
     HoneyStartComponent,
     HoneyListComponent,
     HoneyAddModalComponent,
+    NavHomeComponent,
+    HoneyItemsComponent,
   ],
   imports: [
     BrowserModule,
