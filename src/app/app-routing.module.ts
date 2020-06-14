@@ -8,12 +8,12 @@ import { StatisticsComponent } from './admin/statistics/statistics.component';
 import { WarehouseManagementComponent } from './admin/warehouse-management/warehouse-management.component';
 import { HoneyDetailComponent } from './admin/warehouse-management/honey-detail/honey-detail.component';
 import { HoneyStartComponent } from './admin/warehouse-management/honey-start/honey-start.component';
+import { CartComponent } from './user/cart/cart.component';
 
 
 const routes: Routes = [
-  {path: '', component: HomeComponent, children: [
-    
-  ]},
+  {path: '', component: HomeComponent},
+  {path: 'cart', component: CartComponent},
   {path: 'admin', component: NavComponent, children: [
     {path: '', component: DashboardComponent},
     {path: 'orders', component: OrdersComponent},

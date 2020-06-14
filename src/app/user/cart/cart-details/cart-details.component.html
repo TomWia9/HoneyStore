@@ -1,0 +1,29 @@
+<div class="card mb-4 ">
+    <div class="card-header bg-primary">
+        Your cart
+    </div>
+    <div class="card-body">
+        <ul class="list-group" *ngFor="let honey of cart.honeys">
+            <li class="list-group-item d-flex align-items-center">
+                <h6>{{ honey.name }}</h6>
+
+                <div class="ml-auto d-flex align-items-center">
+
+                    <strong class="mx-2">
+                                 ${{honey.price}}
+                                  <span class="text-muted">x</span>
+                    </strong>
+                    <div class="quantity">
+                        <input type="button" value="+" class="plus">
+                        <input type="number" step="1" max="99" min="1" value="1" title="Qty" class="qty" size="4">
+                        <input type="button" value="-" class="minus">
+                    </div>
+                    <button type="button" class="btn btn-outline-danger btn-xs mx-2" (click)="onDelete(honey.id)">
+                        <fa-icon [icon]="faTrash"></fa-icon>
+                    </button>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+</div>
