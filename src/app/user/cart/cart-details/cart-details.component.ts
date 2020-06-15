@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Cart } from 'src/app/shared/cart';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-cart-details',
@@ -8,24 +10,34 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./cart-details.component.css']
 })
 export class CartDetailsComponent implements OnInit {
-  
   faTrash = faTrash;
-  cart: Cart = {id: 1,  honeys: [
-    {id: 1, name: 'Acacia Honey', amount: 1000, price: 30},
-    {id: 2, name: 'Avocado Honey', amount: 500, price: 40},
-    {id: 3, name: 'Basswood Honey', amount: 300, price: 35},
-    {id: 4, name: 'Blueberry Honey', amount: 99, price: 33},
-  ]}
+  cart: Cart;
 
-  constructor() { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    // cart = cartService.getCart();
+    this.cart = this.cartService.getCart();
+    this.cart.honeys.forEach(honey => {
+      this.cart.totalPrice += honey.amount * honey.price;
+    });
+    this.cartService.updateCart(this.cart);
   }
 
   onDelete(honeyID: number){
-    console.log(honeyID);
+    console.log(this.cart.id + honeyID);
+    //remove from items from this ^ cart, then update cart in the service
+    //this.cartService.updateCart(this.cart)
     
+  }
+
+  onChange(){
+  this.cart.totalPrice = 0;
+  this.cart.honeys.forEach(honey => {
+      this.cart.totalPrice += honey.amount * honey.price;
+    })
+    console.log('in cartDetails: ' + this.cart.totalPrice);
+    
+  this.cartService.updateCart(this.cart);
   }
 
 }

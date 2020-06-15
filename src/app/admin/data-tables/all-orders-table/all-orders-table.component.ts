@@ -22,11 +22,7 @@ export class AllOrdersTableComponent implements OnInit {
   constructor(private modalService: NgbModal){}
 
   ngOnInit(): void {
-    ORDERS_LIST.forEach(order => {
-      order.products.forEach(product => {
-        order.totalCost += product.price;
-      });
-    });
+   
   }
 
   get orders(): Order[] {

@@ -11,7 +11,7 @@
                         <th scope="col">Status</th>
                         <th scope="col">Buyer first name</th>
                         <th scope="col">Buyer last name</th>
-                        <th scope="col">Total cost</th>
+                        <th scope="col">Total price</th>
                         <th scope="col">Date</th>
                     </tr>
                 </thead>
@@ -21,7 +21,7 @@
                         <td> {{ order.status }} </td>
                         <td>{{ order.client.firstName }} </td>
                         <td>{{ order.client.lastName }}</td>
-                        <td>{{ order.totalCost | number }} </td>
+                        <td>{{ order.totalPrice | number }} </td>
                         <td> {{ order.date }} </td>
                     </tr>
                 </tbody>

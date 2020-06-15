@@ -1,1 +1,52 @@
-<p>payment works!</p>
+<form [formGroup]="form" (submit)="onSubmit(form.value)">
+
+    <div class="card mb-4 ">
+        <div class="card-header bg-primary">
+            <h6>Delivery and payment</h6>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <h6>Delivery</h6>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" formControlName="delivery" value="Personal pickup" id="personalPickup">
+                        <label class="form-check-label" for="personalPickup">Personal pickup
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" formControlName="delivery" value="Parcel locker" id="parcelLocker">
+                        <label class="form-check-label" for="parcelLocker">Parcel locker</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" formControlName="delivery" value="Courier" id="courier">
+                        <label class="form-check-label" for="courier">Courier</label>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <h6>Delivery address</h6>
+                    <p class="mb-0">{{payment.address.city}}</p>
+                    <p class="mb-0">{{payment.address.street}}</p>
+                    <p class="mb-0">{{payment.address.postCode}}</p>
+                    <button class="btn btn-primary btn-sm my-2">Change delivery address</button>
+                </li>
+                <li class="list-group-item">
+                    <h6>Payment</h6>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" formControlName="payment" value="Cash on delivery" id="cashOnDelivery">
+                        <label class="form-check-label" for="cashOnDelivery">Cash on delivery
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" formControlName="payment" value="Credit card" id="creditCard">
+                        <label class="form-check-label" for="creditCard">Credit card</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" formControlName="payment" value="BLIK" id="blik">
+                        <label class="form-check-label" for="blik">BLIK</label>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <button class="btn btn-success mb-4" type="submit">Submit your order</button>
+</form>

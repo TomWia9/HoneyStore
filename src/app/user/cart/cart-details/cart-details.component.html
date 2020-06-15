@@ -1,9 +1,9 @@
 <div class="card mb-4 ">
     <div class="card-header bg-primary">
-        Your cart
+        <h6>Your cart</h6>
     </div>
     <div class="card-body">
-        <ul class="list-group" *ngFor="let honey of cart.honeys">
+        <ul class="list-group" *ngFor="let honey of cart.honeys; let i = index">
             <li class="list-group-item d-flex align-items-center">
                 <h6>{{ honey.name }}</h6>
 
@@ -13,11 +13,7 @@
                                  ${{honey.price}}
                                   <span class="text-muted">x</span>
                     </strong>
-                    <div class="quantity">
-                        <input type="button" value="+" class="plus">
-                        <input type="number" step="1" max="99" min="1" value="1" title="Qty" class="qty" size="4">
-                        <input type="button" value="-" class="minus">
-                    </div>
+                    <input type="number" step="1" max="99" min="1" [value]="honey.amount" [(ngModel)]="honey.amount" (change)="onChange()">
                     <button type="button" class="btn btn-outline-danger btn-xs mx-2" (click)="onDelete(honey.id)">
                         <fa-icon [icon]="faTrash"></fa-icon>
                     </button>
@@ -25,5 +21,8 @@
 
             </li>
         </ul>
+    </div>
+    <div class="card-footer">
+        <h5>Total price: ${{ cart.totalPrice }}</h5>
     </div>
 </div>

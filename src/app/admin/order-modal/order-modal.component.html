@@ -26,7 +26,7 @@
                     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                         <div class="d-flex w-100 justify-content-between">
                             <h6>Total payment:</h6>
-                            <h5>${{ order.totalCost }}</h5>
+                            <h5>${{ order.totalPrice }}</h5>
                         </div>
                     </a>
                 </div>
@@ -51,8 +51,8 @@
                     </a>
                     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                         <h6>Delivery and payment</h6>
-                        <p class="mb-0">{{ order.delivery }}</p>
-                        <p class="mb-0">{{ order.payment }}</p>
+                        <p class="mb-0">{{ order.payment.delivery }}</p>
+                        <p class="mb-0">{{ order.payment.paymentMethod }}</p>
                     </a>
                 </div>
             </div>
