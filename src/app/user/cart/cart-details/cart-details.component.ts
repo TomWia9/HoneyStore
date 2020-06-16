@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Cart } from 'src/app/shared/cart';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { FormGroup, FormBuilder } from '@angular/forms';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -12,11 +11,13 @@ import { CartService } from 'src/app/services/cart.service';
 export class CartDetailsComponent implements OnInit {
   faTrash = faTrash;
   cart: Cart;
+  @Input() mini = false;
 
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
     this.cart = this.cartService.getCart();
+    this.cart.totalPrice = 0;
     this.cart.honeys.forEach(honey => {
       this.cart.totalPrice += honey.amount * honey.price;
     });

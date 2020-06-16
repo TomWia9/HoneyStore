@@ -28,7 +28,6 @@ import { NavHomeComponent } from './user/nav-home/nav-home.component';
 import { HoneyCardsComponent } from './admin/honey-cards/honey-cards.component';
 import { HoneyItemsComponent } from './user/honey-items/honey-items.component';
 import { CartComponent } from './user/cart/cart.component';
-import { CartMiniComponent } from './user/cart-mini/cart-mini.component';
 import { CartDetailsComponent } from './user/cart/cart-details/cart-details.component';
 import { PaymentComponent } from './user/cart/payment/payment.component';
 
@@ -56,7 +55,6 @@ import { PaymentComponent } from './user/cart/payment/payment.component';
     NavHomeComponent,
     HoneyItemsComponent,
     CartComponent,
-    CartMiniComponent,
     CartDetailsComponent,
     PaymentComponent,
   ],

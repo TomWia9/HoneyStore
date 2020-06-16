@@ -1,4 +1,4 @@
-<div class="card mb-4 ">
+<div class="card" [ngClass]="{'mb-4': mini === false, 'miniCart-margin': mini === true}">
     <div class="card-header bg-primary">
         <h6>Your cart</h6>
     </div>
@@ -25,4 +25,5 @@
     <div class="card-footer">
         <h5>Total price: ${{ cart.totalPrice }}</h5>
     </div>
+    <a *ngIf="mini" [routerLink]="['/cart']" class="btn btn-success text-white">Check out</a>
 </div>
