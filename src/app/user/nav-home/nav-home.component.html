@@ -12,7 +12,8 @@
                     <fa-icon [icon]="faUser" size="lg"></fa-icon>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownUser">
-                    <app-login></app-login>
+                    <app-login *ngIf="!isLoggedIn"></app-login>
+                    <app-logout *ngIf="isLoggedIn"></app-logout>
                 </div>
             </li>
             <li class="nav-item dropdown mx-2">
