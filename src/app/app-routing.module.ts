@@ -9,11 +9,13 @@ import { WarehouseManagementComponent } from './admin/warehouse-management/wareh
 import { HoneyDetailComponent } from './admin/warehouse-management/honey-detail/honey-detail.component';
 import { HoneyStartComponent } from './admin/warehouse-management/honey-start/honey-start.component';
 import { CartComponent } from './user/cart/cart.component';
+import { RegisterComponent } from './register/register.component';
 
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'cart', component: CartComponent},
+  {path: 'register', component: RegisterComponent},
   {path: 'admin', component: NavComponent, children: [
     {path: '', component: DashboardComponent},
     {path: 'orders', component: OrdersComponent},

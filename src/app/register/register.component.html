@@ -1,0 +1,66 @@
+<app-nav-home></app-nav-home>
+
+<main>
+    <form [formGroup]="form" (submit)="onSubmit(form)">
+        <div class="container">
+            <div class="row mb-4 mt-4">
+                <div class="col-lg-12 mb-4">
+                    <div class="card ">
+                        <div class="card-header bg-primary">
+                            <h6>Register</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="clientEmail">Email address</label>
+                                        <input type="email" class="form-control" formControlName="email" id="clientEmail" aria-describedby="emailHelp" placeholder="Enter email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="clientPassword">Password</label>
+                                        <input type="password" class="form-control" formControlName="password" id="clientPassword" placeholder="Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="passwordRepeat">Repat password</label>
+                                        <input type="password" class="form-control" formControlName="passwordRepeat" id="passwordRepeat" placeholder="Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="firstName">First name</label>
+                                        <input type="text" class="form-control" formControlName="firstName" id="firstName" placeholder="Enter your first name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="lastName">Last name</label>
+                                        <input type="text" class="form-control" formControlName="lastName" id="lastName" placeholder="Enter your last name">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="form-group">
+                                        <label for="city">City</label>
+                                        <input type="text" class="form-control" formControlName="city" id="city" placeholder="Enter your city">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="street">Street and home number</label>
+                                        <input type="text" class="form-control" formControlName="street" id="street" placeholder="Enter your street and home number">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="postcode">Postcode</label>
+                                        <input type="text" class="form-control" formControlName="postcode" id="postcode" placeholder="Enter your postcode">
+                                    </div>
+                                    <div *ngIf="error" class="card border-danger my-4 mx-auto" style="max-width: 18rem;">
+                                        <div class="card-header">Error</div>
+                                        <div class="card-body text-danger">
+                                            <p class="card-text">Check that all fields are correctly completed</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center">
+                            <button class="btn btn-success text-white w-100" type="submit">Register</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</main>
