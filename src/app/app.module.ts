@@ -30,6 +30,7 @@ import { HoneyItemsComponent } from './user/honey-items/honey-items.component';
 import { CartComponent } from './user/cart/cart.component';
 import { CartDetailsComponent } from './user/cart/cart-details/cart-details.component';
 import { PaymentComponent } from './user/cart/payment/payment.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { PaymentComponent } from './user/cart/payment/payment.component';
     CartComponent,
     CartDetailsComponent,
     PaymentComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
