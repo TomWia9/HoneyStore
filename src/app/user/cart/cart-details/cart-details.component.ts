@@ -14,6 +14,7 @@ export class CartDetailsComponent implements OnInit {
   cart: Cart;
   @Input() mini = false;
   isLoggedIn: boolean;
+  empty = false;
 
 
   constructor(private cartService: CartService, private authService: AuthService) { }
@@ -21,29 +22,38 @@ export class CartDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.authService.isLoggedIn.subscribe(x => {
       this.isLoggedIn = x;
-    })
-    this.cart = this.cartService.getCart();
-    this.cart.totalPrice = 0;
-    this.cart.honeys.forEach(honey => {
-      this.cart.totalPrice += honey.amount * honey.price;
     });
+
+    this.cart = this.cartService.getCart();
+
+    this.cart.totalPrice = 0;
+    if (this.cart.honeys !== null) {
+      this.cart.honeys.forEach(honey => {
+        this.cart.totalPrice += honey.amount * honey.price;
+      });
+
+      if (this.cart.honeys.length === 0) {
+        this.empty = true;
+      }
+
+    } else {
+      this.empty = true;
+    }
+
     this.cartService.updateCart(this.cart);
   }
 
-  onDelete(honeyID: number){
-    console.log(this.cart.id + honeyID);
-    //remove from items from this ^ cart, then update cart in the service
-    //this.cartService.updateCart(this.cart)
-    
+  onDelete(index: number) {
+    this.cartService.deleteHoneyFromCart(index);
   }
 
-  onChange(){
+  onChange() {
   this.cart.totalPrice = 0;
   this.cart.honeys.forEach(honey => {
       this.cart.totalPrice += honey.amount * honey.price;
-    })
-    console.log('in cartDetails: ' + this.cart.totalPrice);
-    
+    });
+  console.log('in cartDetails: ' + this.cart.totalPrice);
+
   this.cartService.updateCart(this.cart);
   }
 

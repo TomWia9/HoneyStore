@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { Honey } from 'src/app/shared/honey';
+import { CartService } from 'src/app/services/cart.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-honey-items',
@@ -17,14 +19,16 @@ export class HoneyItemsComponent implements OnInit {
     {id: 4, name: 'Blueberry Honey', amount: 99, price: 33},
   ];
 
-  constructor() { }
+  constructor(private cartService: CartService, private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  onAddToCart(honey){
-    console.log(honey);
-    
+  onAddToCart(honey) {
+
+     const h: Honey = {id: honey.id, name: honey.name, amount: 1, price: honey.price };
+     this.cartService.addToCart(h);
+
   }
 
 }

@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, ComponentRef, ComponentFactoryResolver } from '@angular/core';
 import { faSearch, faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons';
-import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { Observable } from 'rxjs';
+import { CartDetailsComponent } from '../cart/cart-details/cart-details.component';
 @Component({
   selector: 'app-nav-home',
   templateUrl: './nav-home.component.html',
@@ -14,13 +13,25 @@ export class NavHomeComponent implements OnInit {
   faShoppingCart = faShoppingCart;
   faUser = faUser;
   isLoggedIn: boolean;
+  @ViewChild('dynamicCartDetailsComponent', {read: ViewContainerRef, static: false}) target: ViewContainerRef;
+  private componentRef: ComponentRef<any>;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit(): void {
     this.authService.isLoggedIn.subscribe(x => {
      this.isLoggedIn = x;
-   })
+   });
+  }
+
+  onAddComponent() {
+    if (this.componentRef) {
+      this.componentRef.destroy();
+     }
+    const childComponent = this.componentFactoryResolver.resolveComponentFactory(CartDetailsComponent);
+    this.componentRef = this.target.createComponent(childComponent);
+    this.componentRef.instance.mini = true;
+
   }
 
 

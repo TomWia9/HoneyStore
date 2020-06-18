@@ -1,7 +1,7 @@
 import { Honey } from './honey';
 import { Payment } from './payment';
 
-export interface Cart{
+export class Cart{
     id: number;
     honeys: Honey[];
     totalPrice: number;
