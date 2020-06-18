@@ -10,6 +10,7 @@ import { HoneyDetailComponent } from './admin/warehouse-management/honey-detail/
 import { HoneyStartComponent } from './admin/warehouse-management/honey-start/honey-start.component';
 import { CartComponent } from './user/cart/cart.component';
 import { RegisterComponent } from './register/register.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 
 const routes: Routes = [
@@ -22,9 +23,11 @@ const routes: Routes = [
     {path: 'statistics', component: StatisticsComponent},
     {path: 'warehouse', component: WarehouseManagementComponent, children: [
       {path: '', component: HoneyStartComponent},
-      {path: 'honey/:id', component: HoneyDetailComponent}
+      {path: 'honey/:index', component: HoneyDetailComponent}
     ]},
   ]},
+  {path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'}},
+    { path: '**', redirectTo: '/not-found', pathMatch: 'full' }
 ];
 
 @NgModule({

@@ -3,8 +3,8 @@
         Honeys in store
     </div>
     <div class="card-body">
-        <div class="list-group" *ngFor="let honey of honeys">
-            <a [routerLink]="['honey', honey.id]" class="list-group-item list-group-item-action justify-content-between d-flex w-100" routerLinkActive="active">
+        <div class="list-group" *ngFor="let honey of honeys; let i = index">
+            <a [routerLink]="['honey', i]" class="list-group-item list-group-item-action justify-content-between d-flex w-100" routerLinkActive="active">
                 <p>{{ honey.name }}</p>
                 <ng-container *ngIf="allowDelete === true">
                     <fa-icon [icon]="faWindowClose" size="lg" [styles]="{'stroke': '#d9534f', 'color': '#d9534f'}" role="button" (click)="onDelete(honey.id)"></fa-icon>

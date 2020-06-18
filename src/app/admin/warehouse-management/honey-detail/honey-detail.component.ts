@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Honey } from 'src/app/shared/honey';
 
 @Component({
@@ -9,8 +9,9 @@ import { Honey } from 'src/app/shared/honey';
 })
 export class HoneyDetailComponent implements OnInit {
 
-  id: number;
-  honeys: Honey[] = [ //temp (mock data)
+  index: number;
+  err = false;
+  honeys: Honey[] = [ // temp (mock data)
     {id: 1, name: 'Acacia Honey', amount: 1000, price: 30},
     {id: 2, name: 'Avocado Honey', amount: 500, price: 40},
     {id: 3, name: 'Basswood Honey', amount: 300, price: 35},
@@ -18,18 +19,23 @@ export class HoneyDetailComponent implements OnInit {
   ];
   honey: Honey;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(
       (params: Params) => {
-        this.id = +params['id'];
-        console.log(this.id);
-        this.honey = this.honeys[this.id-1];
+        this.index = +params.index;
+
+        if (this.index >= this.honeys.length) {
+          this.err = true;
+          this.router.navigate(['not-found']);
+        } else {
+          this.honey = this.honeys[this.index];
+        }
       }
     );
 
-    //honey = honeyService.getHoney(this.id);
+    // honey = honeyService.getHoney(this.id);
 
   }
 
