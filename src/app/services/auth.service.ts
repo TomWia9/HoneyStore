@@ -19,11 +19,14 @@ export class AuthService {
 
   signIn(){
     this.loggedIn.next(true);
+    this.router.navigate(['']);
+
 
     }
 
   signOut(){
     this.loggedIn.next(false);
+    this.router.navigate(['']);
   }
 
   getLogin(){

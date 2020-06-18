@@ -13,14 +13,11 @@ export class NavHomeComponent implements OnInit {
   faSearch = faSearch;
   faShoppingCart = faShoppingCart;
   faUser = faUser;
-  root = true;
   isLoggedIn: boolean;
 
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.root = this.router.url !== '/cart';
-    
     this.authService.isLoggedIn.subscribe(x => {
      this.isLoggedIn = x;
    })

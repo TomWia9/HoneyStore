@@ -11,12 +11,18 @@ import { HoneyStartComponent } from './admin/warehouse-management/honey-start/ho
 import { CartComponent } from './user/cart/cart.component';
 import { RegisterComponent } from './register/register.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { LoginComponent } from './login/login.component';
+import { NavHomeComponent } from './user/nav-home/nav-home.component';
 
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'cart', component: CartComponent},
-  {path: 'register', component: RegisterComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  {path: '', component: NavHomeComponent, children: [
+    {path: 'home', component: HomeComponent},
+    {path: 'cart', component: CartComponent},
+    {path: 'register', component: RegisterComponent},
+    {path: 'login', component: LoginComponent},
+  ]},
   {path: 'admin', component: NavComponent, children: [
     {path: '', component: DashboardComponent},
     {path: 'orders', component: OrdersComponent},
