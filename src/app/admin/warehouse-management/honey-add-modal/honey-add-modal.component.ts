@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { HoneysService } from 'src/app/services/honeys.service';
+import { Honey } from 'src/app/shared/honey';
 
 @Component({
   selector: 'app-honey-add-modal',
@@ -10,23 +12,24 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class HoneyAddModalComponent implements OnInit {
   form: FormGroup;
   err: boolean = null;
-  constructor(public activeModal: NgbActiveModal, private fb: FormBuilder) { }
+  constructor(public activeModal: NgbActiveModal, private fb: FormBuilder, private honeysService: HoneysService) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      honeyName: '',
-      honeyPrice: '',
+      name: '',
+      price: '',
+      amount: '',
       honeyImage: null,
-    })
+    });
   }
 
-  onSubmit(value){
-    if(value.honeyName !== '' && value.honeyPrice !== ''){
+  onSubmit(value) {
+    if (value.honeyName !== '' && value.honeyPrice !== '') {
       console.log('works');
       this.err = false;
-      // honeyService.addHoney(value as Honey);
-      
-    } else{
+      this.honeysService.addHoney(value as Honey);
+
+    } else {
       this.err = true;
     }
   }

@@ -8,11 +8,15 @@
     <form [formGroup]="form" (submit)="onSubmit(form.value)" class="mb-4">
         <div class="form-group">
             <label for="inputName">Honey name</label>
-            <input formControlName="honeyName" type="text" class="form-control" id="inputName" aria-describedby="name" placeholder="Enter honey name" required>
+            <input formControlName="name" type="text" class="form-control" id="inputName" aria-describedby="name" placeholder="Enter honey name" required>
         </div>
         <div class="form-group">
             <label for="inputPrice">Price</label>
-            <input formControlName="honeyPrice" type="number" class="form-control" id="inputPrice" placeholder="Enter price of honey" required>
+            <input formControlName="price" type="number" class="form-control" id="inputPrice" placeholder="Enter price of honey" required>
+        </div>
+        <div class="form-group">
+            <label for="inputAmount">Amount</label>
+            <input formControlName="amount" type="number" class="form-control" id="inputAmount" placeholder="Enter amount of honeys" required>
         </div>
         <div class="form-group">
             <label for="inputImage">Add an image of honey</label>

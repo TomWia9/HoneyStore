@@ -3,6 +3,7 @@ import { Honey } from 'src/app/shared/honey';
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HoneyAddModalComponent } from '../honey-add-modal/honey-add-modal.component';
+import { HoneysService } from 'src/app/services/honeys.service';
 
 @Component({
   selector: 'app-honey-list',
@@ -12,16 +13,12 @@ import { HoneyAddModalComponent } from '../honey-add-modal/honey-add-modal.compo
 export class HoneyListComponent implements OnInit {
   faWindowClose = faWindowClose;
   allowDelete = false;
-  honeys: Honey[] = [
-    {id: 1, name: 'Acacia Honey', amount: 1000, price: 30},
-    {id: 2, name: 'Avocado Honey', amount: 500, price: 40},
-    {id: 3, name: 'Basswood Honey', amount: 300, price: 35},
-    {id: 4, name: 'Blueberry Honey', amount: 99, price: 33},
-  ];
+  honeys: Honey[];
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal, private honeysService: HoneysService) { }
 
   ngOnInit(): void {
+    this.honeys = this.honeysService.getHoneysList();
   }
 
   onDelete(honeyID: number){

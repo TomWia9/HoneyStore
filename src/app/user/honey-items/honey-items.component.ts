@@ -22,6 +22,9 @@ export class HoneyItemsComponent implements OnInit {
   constructor(private cartService: CartService, private authService: AuthService) { }
 
   ngOnInit(): void {
+    // honeysService.getHoneysList(SORT TYPE (popularity, alfabeticaly, price)).subscribe(x => {
+    //   this.honeys = x;
+    // }) //it will be add when api will be ready
   }
 
   onAddToCart(honey) {
