@@ -1,5 +1,4 @@
-<form [formGroup]="form" (submit)="onSubmit(form.value)">
-
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="card mb-4 ">
         <div class="card-header bg-primary">
             <h6>Delivery and payment</h6>
@@ -8,10 +7,9 @@
             <ul class="list-group">
                 <li class="list-group-item">
                     <h6>Delivery</h6>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check">
                         <input class="form-check-input" type="radio" formControlName="delivery" value="Personal pickup" id="personalPickup">
-                        <label class="form-check-label" for="personalPickup">Personal pickup
-                        </label>
+                        <label class="form-check-label" for="personalPickup">Personal pickup</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" formControlName="delivery" value="Parcel locker" id="parcelLocker">
@@ -33,8 +31,7 @@
                     <h6>Payment</h6>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" formControlName="payment" value="Cash on delivery" id="cashOnDelivery">
-                        <label class="form-check-label" for="cashOnDelivery">Cash on delivery
-                        </label>
+                        <label class="form-check-label" for="cashOnDelivery">Cash on delivery</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" formControlName="payment" value="Credit card" id="creditCard">
@@ -48,5 +45,5 @@
             </ul>
         </div>
     </div>
-    <button class="btn btn-success mb-4" type="submit">Submit your order</button>
+    <button class="btn btn-success mb-4" type="submit" [disabled]="!form.valid">Submit your order</button>
 </form>

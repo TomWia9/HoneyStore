@@ -7,16 +7,18 @@
                         <h6>Sign in</h6>
                     </div>
                     <div class="card-body">
-                        <form [formGroup]="form" (submit)="onSubmit(form.value)">
+                        <form [formGroup]="form" (ngSubmit)="onSubmit()">
                             <div class="form-group">
                                 <label for="email">Email address</label>
                                 <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter email">
+                                <span *ngIf="!form.get('email').valid && form.get('email').touched" class="help-block text-danger">Please enter email</span>
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
                                 <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password">
+                                <span *ngIf="!form.get('password').valid && form.get('password').touched" class="help-block text-danger">Please enter a password!</span>
                             </div>
-                            <button type="submit" class="btn btn-success">Sign in</button>
+                            <button type="submit" class="btn btn-success" [disabled]="!form.valid">Sign in</button>
                         </form>
                     </div>
                     <div class="card-footer">

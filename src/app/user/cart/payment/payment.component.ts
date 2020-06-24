@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Payment } from 'src/app/shared/payment';
 import { Address } from 'src/app/shared/address';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { CartService } from 'src/app/services/cart.service';
 import { OrdersService } from 'src/app/services/orders.service';
 
@@ -15,12 +15,12 @@ export class PaymentComponent implements OnInit {
   payment: Payment;
   address: Address = {city: 'Warsaw', street: 'Saint street 4', postCode: '00-000'};
 
-  constructor(private fb: FormBuilder, private cartService: CartService, private orderService: OrdersService) { }
+  constructor(private cartService: CartService, private orderService: OrdersService) { }
 
   ngOnInit(): void {
-    this.form = this.fb.group({
-      delivery: null,
-      payment: null
+    this.form = new FormGroup({
+      'delivery': new FormControl(null, Validators.required),
+      'payment': new FormControl(null, Validators.required)
     })
     //get logged client id
     //this.address = clientService.getClientAddress(clientID)
@@ -29,10 +29,10 @@ export class PaymentComponent implements OnInit {
     
   }
 
-  onSubmit(value){
-    if(value.delivery !== null && value.payment !== null){
-      this.payment.delivery = value.delivery;
-      this.payment.paymentMethod = value.payment;
+  onSubmit(){
+    if(this.form.value.delivery !== null && this.form.value.payment !== null){
+      this.payment.delivery = this.form.value.delivery;
+      this.payment.paymentMethod = this.form.value.payment;
       this.cartService.addPayment(this.payment);
       this.orderService.addOrder();
 

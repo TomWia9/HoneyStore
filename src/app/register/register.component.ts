@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -8,32 +8,22 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
   form: FormGroup;
-  error = false;
-
-  constructor(private fb: FormBuilder) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.form = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(5)]],
-      passwordRepeat: ['', [Validators.required, Validators.minLength(5)]],
-      firstName: ['', [Validators.required, Validators.minLength(5)]],
-      lastName: ['', [Validators.required, Validators.minLength(5)]],
-      city: ['', [Validators.required, Validators.minLength(2)]],
-      street: ['', [Validators.required, Validators.minLength(3)]],
-      postcode: ['', [Validators.required, Validators.minLength(5)]],
-    });
+    this.form = new FormGroup({
+      'email': new FormControl(null, [Validators.required, Validators.email]),
+      'password': new FormControl(null, [Validators.required, Validators.minLength(5)]),
+      'passwordRepeat': new FormControl(null, [Validators.required, Validators.minLength(5)]),
+      'firstName': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      'lastName': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      'city': new FormControl(null, [Validators.required, Validators.minLength(2)]),
+      'street': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      'postcode': new FormControl(null, [Validators.required, Validators.minLength(5)]),
+  })}
+
+  onSubmit(){
+      console.log(this.form.value);
+      this.form.reset();
   }
-
-  onSubmit(form){
-    
-    if(form.status === 'INVALID' || form.value.password !== form.value.passwordRepeat){
-      this.error = true;
-
-    }
-
-    console.log(form.value);
-    
-  }
-
 }
