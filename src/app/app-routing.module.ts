@@ -13,17 +13,19 @@ import { RegisterComponent } from './register/register.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { LoginComponent } from './login/login.component';
 import { NavHomeComponent } from './user/nav-home/nav-home.component';
+import { AuthGuard } from './auth/auth.guard';
+import { AdminGuard } from './auth/admin.guard';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {path: '', component: NavHomeComponent, children: [
     {path: 'home', component: HomeComponent},
-    {path: 'cart', component: CartComponent},
+    {path: 'cart', component: CartComponent, canActivate: [AuthGuard]},
     {path: 'register', component: RegisterComponent},
     {path: 'login', component: LoginComponent},
   ]},
-  {path: 'admin', component: NavComponent, children: [
+  {path: 'admin', component: NavComponent, canActivate: [AdminGuard], children: [
     {path: '', component: DashboardComponent},
     {path: 'orders', component: OrdersComponent},
     {path: 'statistics', component: StatisticsComponent},

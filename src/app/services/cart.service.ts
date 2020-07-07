@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Cart } from '../shared/cart';
 import { Payment } from '../shared/payment';
 import { Honey } from '../shared/honey';
-import { AuthService } from './auth.service';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +24,8 @@ export class CartService {
   };
 
   constructor(private authService: AuthService) {
-     this.authService.isLoggedIn.subscribe(x => {
-      this.isLoggedIn = x;
+     this.authService.currentUser.subscribe(x => {
+      this.isLoggedIn = x !== null;
     });
    }
 

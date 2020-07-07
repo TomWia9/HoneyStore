@@ -5,7 +5,7 @@ export class Payment{
     paymentMethod: string;
     address: Address;
 
-    constructor(address){
+    constructor(address: Address) {
         this.address = address;
     }
 }

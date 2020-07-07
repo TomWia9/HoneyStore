@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Cart } from 'src/app/shared/cart';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { CartService } from 'src/app/services/cart.service';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-cart-details',
@@ -20,8 +20,8 @@ export class CartDetailsComponent implements OnInit {
   constructor(private cartService: CartService, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.authService.isLoggedIn.subscribe(x => {
-      this.isLoggedIn = x;
+    this.authService.currentUser.subscribe(x => {
+      this.isLoggedIn = x !== null;
     });
 
     this.cart = this.cartService.getCart();

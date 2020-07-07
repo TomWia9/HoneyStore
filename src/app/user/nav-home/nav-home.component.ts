@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ViewContainerRef, ComponentRef, ComponentFactoryResolver } from '@angular/core';
 import { faSearch, faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/auth/auth.service';
 import { CartDetailsComponent } from '../cart/cart-details/cart-details.component';
 @Component({
   selector: 'app-nav-home',
@@ -19,8 +19,8 @@ export class NavHomeComponent implements OnInit {
   constructor(private authService: AuthService, private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit(): void {
-    this.authService.isLoggedIn.subscribe(x => {
-     this.isLoggedIn = x;
+    this.authService.currentUser.subscribe(x => {
+     this.isLoggedIn = x !== null;
    });
   }
 
