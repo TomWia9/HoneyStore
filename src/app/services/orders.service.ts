@@ -9,7 +9,7 @@ import { Address } from '../shared/address';
 })
 export class OrdersService {
   private order: Order = new Order();
-  address: Address = {city: 'Warsaw', street: 'Saint street 4', postCode: '00-000'}; //temp
+  address: Address = {city: 'Warsaw', streetAndHouseNumber: 'Saint street 4', postCode: '00-000'}; //temp
   constructor(private cartService: CartService) { }
   client: Client = {firstName: 'Tomasz', lastName: 'Wiatrowski', email: 'tomaszwiatrowski9@gmail.com', address: this.address};
 

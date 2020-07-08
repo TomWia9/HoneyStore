@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Payment } from 'src/app/shared/payment';
 import { Address } from 'src/app/shared/address';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CartService } from 'src/app/services/cart.service';
 import { OrdersService } from 'src/app/services/orders.service';
 
@@ -13,7 +13,7 @@ import { OrdersService } from 'src/app/services/orders.service';
 export class PaymentComponent implements OnInit {
   form: FormGroup;
   payment: Payment;
-  address: Address = {city: 'Warsaw', street: 'Saint street 4', postCode: '00-000'};
+  address: Address = {city: 'Warsaw', streetAndHouseNumber: 'Saint street 4', postCode: '00-000'};
 
   constructor(private cartService: CartService, private orderService: OrdersService) { }
 
