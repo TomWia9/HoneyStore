@@ -13,8 +13,8 @@
                                  ${{honey.price}}
                                   <span class="text-muted">x</span>
                     </strong>
-                    <input type="number" step="1" max="99" min="1" [value]="honey.amount" [(ngModel)]="honey.amount" (change)="onChange()">
-                    <button type="button" class="btn btn-outline-danger btn-xs mx-2" (click)="onDelete(i)">
+                    <input type="number" step="1" max="99" min="1" [value]="honey.amount" [(ngModel)]="honey.amount" (change)="onChange(honey)">
+                    <button type="button" class="btn btn-outline-danger btn-xs mx-2" (click)="onDelete(honey.name)">
                         <fa-icon [icon]="faTrash"></fa-icon>
                     </button>
                 </div>
@@ -26,7 +26,7 @@
 
     </div>
     <div class="card-footer" *ngIf="!empty">
-        <h5>Total price: ${{ cart.totalPrice }}</h5>
+        <h5>Total price: ${{ totalPrice }}</h5>
     </div>
     <a *ngIf="mini && isLoggedIn && !empty" [routerLink]="['/cart']" class="btn btn-success text-white">Check out</a>
     <a *ngIf="mini && !isLoggedIn && !empty" [routerLink]="['/login']" class="btn btn-warning text-white">Sign in to check the cart</a>

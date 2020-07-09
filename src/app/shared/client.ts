@@ -5,5 +5,4 @@ export interface Client{
     lastName: string;
     email: string;
     address: Address;
-    
 }

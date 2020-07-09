@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { Honey } from 'src/app/shared/honey';
 import { CartService } from 'src/app/services/cart.service';
+import { HoneysService } from 'src/app/services/honeys.service';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -12,25 +13,22 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class HoneyItemsComponent implements OnInit {
 
   faShoppingCart = faShoppingCart;
-  honeys: Honey[] = [
-    {id: 1, name: 'Acacia Honey', amount: 1000, price: 30},
-    {id: 2, name: 'Avocado Honey', amount: 500, price: 40},
-    {id: 3, name: 'Basswood Honey', amount: 300, price: 35},
-    {id: 4, name: 'Blueberry Honey', amount: 99, price: 33},
-  ];
+  honeys: Honey[] = [];
 
-  constructor(private cartService: CartService, private authService: AuthService) { }
+  constructor(private cartService: CartService, private honeysService: HoneysService, private authService: AuthService) { }
 
   ngOnInit(): void {
-    // honeysService.getHoneysList(SORT TYPE (popularity, alfabeticaly, price)).subscribe(x => {
-    //   this.honeys = x;
-    // }) //it will be add when api will be ready
+    this.honeysService.getHoneysList().subscribe(x => {
+      this.honeys = x.body;
+    });
   }
 
   onAddToCart(honey) {
 
      const h: Honey = {id: honey.id, name: honey.name, amount: 1, price: honey.price };
-     this.cartService.addToCart(h);
+     console.log(h);
+
+     this.cartService.addToCart(h, this.authService.getCurrentUserValue().id).subscribe();
 
   }
 

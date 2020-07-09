@@ -18,7 +18,9 @@ export class HoneyListComponent implements OnInit {
   constructor(private modalService: NgbModal, private honeysService: HoneysService) { }
 
   ngOnInit(): void {
-    this.honeys = this.honeysService.getHoneysList();
+    this.honeysService.getHoneysList().subscribe(x => {
+      this.honeys = x.body;
+    });
   }
 
   onDelete(honeyID: number){

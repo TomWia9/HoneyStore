@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from '../../../shared/order';
-import { ORDERS } from '../orders/orders';
 import { faTable } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { OrderModalComponent } from '../../order-modal/order-modal.component';
-
-const ORDERS_LIST = ORDERS;
+import { OrdersService } from 'src/app/services/orders.service';
 
 @Component({
   selector: 'app-all-orders-table',
@@ -16,17 +14,24 @@ const ORDERS_LIST = ORDERS;
 export class AllOrdersTableComponent implements OnInit {
   page = 1;
   pageSize = 4;
-  collectionSize = ORDERS_LIST.length;
   faTable = faTable;
+  ordersList: Order[] = [];
+  collectionSize: number;
 
-  constructor(private modalService: NgbModal){}
+  constructor(private modalService: NgbModal, private ordersService: OrdersService){}
 
   ngOnInit(): void {
-   
+
+    this.ordersService.getOrders(true, 0).subscribe(x => {
+      this.ordersList = x.body;
+    })
+
+    this.collectionSize = this.ordersList.length;
+
   }
 
   get orders(): Order[] {
-    return ORDERS_LIST
+    return this.ordersList
       .map((order, i) => ({id: i + 1, ...order}))
       .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
   }

@@ -39,31 +39,4 @@ export class AuthService {
     this.currentUserSubject.next(null);
     this.router.navigate(['/home']);
   }
-
-  //temp auth
-  // login = 'tomaszwiatrowski9@gmail.com'; //it will be recived from the api in the future
-  // private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-
-  // get isLoggedIn() {
-  //   return this.loggedIn.asObservable();
-  // }
-
-  // constructor(private router: Router) { }
-
-  // signIn(){
-  //   this.loggedIn.next(true);
-  //   this.router.navigate(['']);
-
-
-  //   }
-
-  // signOut(){
-  //   this.loggedIn.next(false);
-  //   this.router.navigate(['']);
-  // }
-
-  // getLogin(){
-  //   return this.login;
-  // }
-
 }

@@ -1,6 +1,5 @@
 import { Honey } from './honey';
 import { Client } from 'src/app/shared/client';
-import { Payment } from './payment';
 
 export class Order {
     id: number;
@@ -8,6 +7,7 @@ export class Order {
     client: Client;
     products: Honey[];
     totalPrice = 0;
-    payment: Payment;
-    date: string;
+    payment: string;
+    delivery: string;
+    date: Date;
 }

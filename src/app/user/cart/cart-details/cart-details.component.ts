@@ -3,6 +3,7 @@ import { Cart } from 'src/app/shared/cart';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { CartService } from 'src/app/services/cart.service';
 import { AuthService } from 'src/app/auth/auth.service';
+import { Honey } from 'src/app/shared/honey';
 
 @Component({
   selector: 'app-cart-details',
@@ -11,11 +12,12 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class CartDetailsComponent implements OnInit {
   faTrash = faTrash;
-  cart: Cart;
+  cart: Cart = new Cart();
   @Input() mini = false;
   isLoggedIn: boolean;
   empty = false;
-
+  totalPrice = 0;
+  userId: number;
 
   constructor(private cartService: CartService, private authService: AuthService) { }
 
@@ -24,37 +26,39 @@ export class CartDetailsComponent implements OnInit {
       this.isLoggedIn = x !== null;
     });
 
-    this.cart = this.cartService.getCart();
+    this.userId = this.authService.getCurrentUserValue().id;
 
-    this.cart.totalPrice = 0;
-    if (this.cart.honeys !== null) {
-      this.cart.honeys.forEach(honey => {
-        this.cart.totalPrice += honey.amount * honey.price;
-      });
+    this.cartService.getCart(this.userId).subscribe(x => {
+      this.cart = x.body;
+      this.totalPrice = 0;
+      if (x.body.honeys !== null) {
+        x.body.honeys.forEach(honey => {
+          this.totalPrice += honey.amount * honey.price;
+        });
 
-      if (this.cart.honeys.length === 0) {
+        if (x.body.honeys.length === 0) {
+          this.empty = true;
+        }
+
+      } else {
         this.empty = true;
       }
 
-    } else {
-      this.empty = true;
-    }
-
-    this.cartService.updateCart(this.cart);
-  }
-
-  onDelete(index: number) {
-    this.cartService.deleteHoneyFromCart(index);
-  }
-
-  onChange() {
-  this.cart.totalPrice = 0;
-  this.cart.honeys.forEach(honey => {
-      this.cart.totalPrice += honey.amount * honey.price;
     });
-  console.log('in cartDetails: ' + this.cart.totalPrice);
+  }
 
-  this.cartService.updateCart(this.cart);
+  onDelete(honeyName: string) {
+    this.cartService.deleteHoneyFromCart(honeyName, this.userId).subscribe();
+  }
+
+  onChange(honey: Honey) {
+    this.cartService.UpdateCart(honey, this.userId).subscribe();
+
+    this.totalPrice = 0;
+    this.cart.honeys.forEach(honey => {
+      this.totalPrice += honey.amount * honey.price;
+    });
+
   }
 
 }

@@ -1,11 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { faTable } from '@fortawesome/free-solid-svg-icons';
-import { ORDERS } from '../orders/orders';
 import { Order } from '../../../shared/order';
 import { OrderModalComponent } from '../../order-modal/order-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
-const ORDERS_LIST = ORDERS;
+import { OrdersService } from 'src/app/services/orders.service';
 
 @Component({
   selector: 'app-orders-table',
@@ -13,7 +11,7 @@ const ORDERS_LIST = ORDERS;
   styleUrls: ['./orders-table.component.css']
 })
 export class OrdersTableComponent implements OnInit{
-  @Input() status: string;
+  @Input() status: number;
   ordersList: Order[] = [];
 
   page = 1;
@@ -21,13 +19,11 @@ export class OrdersTableComponent implements OnInit{
   collectionSize: number;
   faTable = faTable;
 
-  constructor(private modalService: NgbModal){}
+  constructor(private modalService: NgbModal, private ordersService: OrdersService){}
 
   ngOnInit(): void {
-    ORDERS_LIST.forEach(order => {
-      if(order.status === this.status){
-        this.ordersList.push(order);
-      }
+    this.ordersService.getOrders(false, this.status).subscribe(x => {
+      this.ordersList = x.body;
     });
     this.collectionSize = this.ordersList.length;
   }

@@ -19,10 +19,12 @@ export class HoneyDetailComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.honeys = this.honeysService.getHoneysList();
+   this.honeysService.getHoneysList().subscribe(x => {
+     this.honeys = x.body;
+   });
 
 
-    this.route.params.subscribe(
+   this.route.params.subscribe(
       (params: Params) => {
         this.index = +params.index;
 
