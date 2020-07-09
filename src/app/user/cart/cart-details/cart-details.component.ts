@@ -52,7 +52,7 @@ export class CartDetailsComponent implements OnInit {
   }
 
   onChange(honey: Honey) {
-    this.cartService.UpdateCart(honey, this.userId).subscribe();
+    this.cartService.updateCart(honey, this.userId).subscribe();
 
     this.totalPrice = 0;
     this.cart.honeys.forEach(honey => {

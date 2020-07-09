@@ -1,13 +1,15 @@
 import { Honey } from './honey';
-import { Client } from 'src/app/shared/client';
+import { Delivery } from './delivery';
+import { Payment } from './payment';
+import { Status } from './status';
 
 export class Order {
     id: number;
-    status: string;
-    client: Client;
-    products: Honey[];
-    totalPrice = 0;
-    payment: string;
-    delivery: string;
+    clientId: number;
+    orderedHoneys: Honey[];
+    totalPrice: number;
+    delivery: Delivery;
+    payment: Payment;
+    status: Status;
     date: Date;
 }

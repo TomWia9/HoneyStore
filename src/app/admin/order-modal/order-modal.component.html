@@ -11,7 +11,7 @@
             <div class="col-lg-6 mb-4">
                 <h5 class="mb-1">Ordered products</h5>
                 <div class="list-group mb-2">
-                    <ng-container *ngFor="let product of order.products">
+                    <ng-container *ngFor="let product of order.orderedHoneys">
                         <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                             <div class="d-flex w-100 justify-content-between">
                                 <div>
@@ -31,7 +31,7 @@
                     </a>
                 </div>
 
-                <button class="btn btn-primary" *ngIf="order.status === 'New'" (click)="onSend()">Send the order</button>
+                <button class="btn btn-primary" *ngIf="order.status === 0" (click)="onSend()">Send the order</button>
             </div>
 
             <div class="col-lg-6 mb-4">
@@ -39,15 +39,15 @@
                 <div class="list-group">
                     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                         <h6>Personal data</h6>
-                        <p class="mb-0">{{ order.client.firstName }}</p>
-                        <p class="mb-0">{{ order.client.lastName }}</p>
-                        <p class="mb-0">{{ order.client.email }}</p>
+                        <p class="mb-0">{{ client.firstName }}</p>
+                        <p class="mb-0">{{ client.lastName }}</p>
+                        <p class="mb-0">{{ client.email }}</p>
                     </a>
                     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                         <h6>Shipping address</h6>
-                        <p class="mb-0">{{ order.client.address.city }}</p>
-                        <p class="mb-0">{{ order.client.address.streetAndHouseNumber }}</p>
-                        <p class="mb-0">{{ order.client.address.postCode }}</p>
+                        <p class="mb-0">{{ address.city }}</p>
+                        <p class="mb-0">{{ address.streetAndHouseNumber }}</p>
+                        <p class="mb-0">{{ address.postCode }}</p>
                     </a>
                     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                         <h6>Delivery and payment</h6>

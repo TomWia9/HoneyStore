@@ -3,6 +3,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Register } from '../shared/register';
 import { Observable } from 'rxjs';
 import { Address } from '../shared/address';
+import { Client } from '../shared/client';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,11 @@ export class UsersService {
   }
 
   GetClientAddress(clientId: number): Observable<HttpResponse<Address>> {
-    return this.htpp.get<Address>(`https://localhost:5001/clients/getClientAddress/${clientId}`, {observe: 'response'});
+    return this.htpp.get<Address>(`https://localhost:5001/api/clients/getClientAddress/${clientId}`, {observe: 'response'});
+  }
+
+  GetClient(clientId: number): Observable<HttpResponse<Client>> {
+    return this.htpp.get<Client>(`https://localhost:5001/api/clients/getClient/${clientId}`, {observe: 'response'});
   }
 
 }

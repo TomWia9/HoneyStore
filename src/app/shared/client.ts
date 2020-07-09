@@ -1,6 +1,6 @@
 import { Address } from './address';
 
-export interface Client{
+export class Client{
     firstName: string;
     lastName: string;
     email: string;

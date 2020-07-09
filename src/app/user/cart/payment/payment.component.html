@@ -8,15 +8,15 @@
                 <li class="list-group-item">
                     <h6>Delivery</h6>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" formControlName="delivery" value="Personal pickup" id="personalPickup">
+                        <input class="form-check-input" type="radio" formControlName="delivery" value=0 id="personalPickup">
                         <label class="form-check-label" for="personalPickup">Personal pickup</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" formControlName="delivery" value="Parcel locker" id="parcelLocker">
+                        <input class="form-check-input" type="radio" formControlName="delivery" value=1 id="parcelLocker">
                         <label class="form-check-label" for="parcelLocker">Parcel locker</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" formControlName="delivery" value="Courier" id="courier">
+                        <input class="form-check-input" type="radio" formControlName="delivery" value=2 id="courier">
                         <label class="form-check-label" for="courier">Courier</label>
                     </div>
                 </li>
@@ -25,25 +25,25 @@
                     <p class="mb-0">{{address.city}}</p>
                     <p class="mb-0">{{address.streetAndHouseNumber}}</p>
                     <p class="mb-0">{{address.postCode}}</p>
-                    <button class="btn btn-primary btn-sm my-2">Change delivery address</button>
+                    <button class="btn btn-primary btn-sm my-2" type="button">Change delivery address</button>
                 </li>
                 <li class="list-group-item">
                     <h6>Payment</h6>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" formControlName="payment" value="Cash on delivery" id="cashOnDelivery">
+                        <input class="form-check-input" type="radio" formControlName="payment" value=0 id="cashOnDelivery">
                         <label class="form-check-label" for="cashOnDelivery">Cash on delivery</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" formControlName="payment" value="Credit card" id="creditCard">
+                        <input class="form-check-input" type="radio" formControlName="payment" value=1 id="creditCard">
                         <label class="form-check-label" for="creditCard">Credit card</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" formControlName="payment" value="BLIK" id="blik">
+                        <input class="form-check-input" type="radio" formControlName="payment" value=2 id="blik">
                         <label class="form-check-label" for="blik">BLIK</label>
                     </div>
                 </li>
             </ul>
         </div>
     </div>
-    <button class="btn btn-success mb-4" type="submit" [disabled]="!form.valid">Submit your order</button>
+    <button class="btn btn-success mb-4" type="submit" [disabled]="!form.valid || isEmpty">Submit your order</button>
 </form>

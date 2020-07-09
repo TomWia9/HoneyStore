@@ -11,7 +11,9 @@ export class OrdersService {
   constructor(private http: HttpClient) { }
 
   addOrder(order: Order): Observable<HttpResponse<Order>> {
-    return this.http.post<Order>('https://localhost:5001/api/ordes/newOrder', order, {observe: 'response'});
+    console.log(JSON.stringify(order));
+    
+    return this.http.post<Order>('https://localhost:5001/api/orders/newOrder', order, {observe: 'response'});
   }
 
   getOrder(orderId: number): Observable<HttpResponse<Order>> {

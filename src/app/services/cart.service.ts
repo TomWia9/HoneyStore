@@ -26,8 +26,11 @@ export class CartService {
    return this.http.delete<any>(`https://localhost:5001/api/carts/removeItemFromCart/${honeyName}/${clientId}`, {observe: 'response'});
   }
 
-  UpdateCart(honey: Honey, clientId: number): Observable<HttpResponse<any>> {
+  updateCart(honey: Honey, clientId: number): Observable<HttpResponse<any>> {
     return this.http.patch<any>(`https://localhost:5001/api/carts/updateCart/${clientId}`, honey, {observe: 'response'});
    }
 
+   isEmpty(clientId: number): Observable<HttpResponse<boolean>>{
+    return this.http.get<boolean>(`https://localhost:5001/api/carts/isEmpty/${clientId}`, {observe: 'response'});
+   }
 }
