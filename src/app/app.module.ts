@@ -37,6 +37,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { ThanksForOrderComponent } from './user/thanks-for-order/thanks-for-order.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
     LogoutComponent,
     RegisterComponent,
     ErrorPageComponent,
+    ThanksForOrderComponent,
   ],
   imports: [
     BrowserModule,

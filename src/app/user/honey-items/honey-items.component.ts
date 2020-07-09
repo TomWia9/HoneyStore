@@ -4,6 +4,7 @@ import { Honey } from 'src/app/shared/honey';
 import { CartService } from 'src/app/services/cart.service';
 import { HoneysService } from 'src/app/services/honeys.service';
 import { AuthService } from 'src/app/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-honey-items',
@@ -14,22 +15,28 @@ export class HoneyItemsComponent implements OnInit {
 
   faShoppingCart = faShoppingCart;
   honeys: Honey[] = [];
+  isLoggedIn: boolean;
 
-  constructor(private cartService: CartService, private honeysService: HoneysService, private authService: AuthService) { }
+  constructor(private cartService: CartService, private honeysService: HoneysService, private authService: AuthService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.honeysService.getHoneysList().subscribe(x => {
       this.honeys = x.body;
     });
+    this.authService.currentUser.subscribe(x => {
+      this.isLoggedIn = x !== null;
+    });
   }
 
   onAddToCart(honey) {
 
-     const h: Honey = {id: honey.id, name: honey.name, amount: 1, price: honey.price };
-     console.log(h);
-
-     this.cartService.addToCart(h, this.authService.getCurrentUserValue().id).subscribe();
-
+    if (!this.isLoggedIn) {
+      this.router.navigate(['/login']);
+    } else {
+      const h: Honey = {id: honey.id, name: honey.name, amount: 1, price: honey.price };
+      this.cartService.addToCart(h, this.authService.getCurrentUserValue().id).subscribe();
+    }
   }
 
 }

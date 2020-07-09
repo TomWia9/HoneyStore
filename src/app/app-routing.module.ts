@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { NavHomeComponent } from './user/nav-home/nav-home.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AdminGuard } from './auth/admin.guard';
+import { ThanksForOrderComponent } from './user/thanks-for-order/thanks-for-order.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
     {path: 'cart', component: CartComponent, canActivate: [AuthGuard]},
     {path: 'register', component: RegisterComponent},
     {path: 'login', component: LoginComponent},
+    {path: 'thankYou', component: ThanksForOrderComponent},
   ]},
   {path: 'admin', component: NavComponent, canActivate: [AdminGuard], children: [
     {path: '', component: DashboardComponent},

@@ -1,8 +1,8 @@
 <div class="card" [ngClass]="{'mb-4': mini === false, 'miniCart-margin': mini === true}">
-    <div class="card-header bg-primary">
+    <div *ngIf="isLoggedIn" class="card-header bg-primary">
         <h6>Your cart</h6>
     </div>
-    <div class="card-body">
+    <div *ngIf="isLoggedIn" class="card-body">
         <ul class="list-group" *ngFor="let honey of cart.honeys; let i = index">
             <li class="list-group-item d-flex align-items-center">
                 <h6>{{ honey.name }}</h6>
@@ -25,9 +25,9 @@
         <p *ngIf="empty">Your cart is empty</p>
 
     </div>
-    <div class="card-footer" *ngIf="!empty">
+    <div class="card-footer" *ngIf="!empty && isLoggedIn">
         <h5>Total price: ${{ totalPrice }}</h5>
     </div>
     <a *ngIf="mini && isLoggedIn && !empty" [routerLink]="['/cart']" class="btn btn-success text-white">Check out</a>
-    <a *ngIf="mini && !isLoggedIn && !empty" [routerLink]="['/login']" class="btn btn-warning text-white">Sign in to check the cart</a>
+    <a *ngIf="mini && !isLoggedIn" [routerLink]="['/login']" class="btn btn-warning text-white">Sign in to check the cart</a>
 </div>

@@ -26,8 +26,13 @@ export class CartDetailsComponent implements OnInit {
       this.isLoggedIn = x !== null;
     });
 
-    this.userId = this.authService.getCurrentUserValue().id;
+    if (this.isLoggedIn) {
+      this.userId = this.authService.getCurrentUserValue().id;
+      this.getCart();
+    }
+  }
 
+  getCart() {
     this.cartService.getCart(this.userId).subscribe(x => {
       this.cart = x.body;
       this.totalPrice = 0;
@@ -43,20 +48,22 @@ export class CartDetailsComponent implements OnInit {
       } else {
         this.empty = true;
       }
-
     });
   }
 
   onDelete(honeyName: string) {
-    this.cartService.deleteHoneyFromCart(honeyName, this.userId).subscribe();
+    this.cartService.deleteHoneyFromCart(honeyName, this.userId).subscribe(() => {
+      this.getCart();
+    }
+    );
   }
 
   onChange(honey: Honey) {
     this.cartService.updateCart(honey, this.userId).subscribe();
 
     this.totalPrice = 0;
-    this.cart.honeys.forEach(honey => {
-      this.totalPrice += honey.amount * honey.price;
+    this.cart.honeys.forEach(honeyItem => {
+      this.totalPrice += honeyItem.amount * honeyItem.price;
     });
 
   }

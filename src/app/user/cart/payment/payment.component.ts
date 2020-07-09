@@ -10,6 +10,7 @@ import { Client } from 'src/app/shared/client';
 import { Honey } from 'src/app/shared/honey';
 import { Delivery } from 'src/app/shared/delivery';
 import { Payment } from 'src/app/shared/payment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
@@ -23,9 +24,10 @@ export class PaymentComponent implements OnInit {
   address: Address = new Address();
   order: Order = new Order();
   isEmpty = false;
+  outOfStock = false;
 
   constructor(private cartService: CartService, private ordersService: OrdersService, private authService: AuthService,
-              private usersService: UsersService) { }
+              private usersService: UsersService, private router: Router) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -55,11 +57,15 @@ export class PaymentComponent implements OnInit {
     this.order.date = new Date();
     console.log(this.order);
 
-    this.ordersService.addOrder(this.order).subscribe(res => {
-      console.log(res);
-
-    });
-    this.isEmpty = true;
+    this.ordersService.addOrder(this.order).subscribe(
+      () => {
+      this.isEmpty = true;
+      this.router.navigate(['/thankYou']);
+      },
+      () => {
+      this.outOfStock = true;
+      alert('Out of stock! Please change amount of honeys');
+      });
   }
 
   getTotalPrice(honeys: Honey[]) {
