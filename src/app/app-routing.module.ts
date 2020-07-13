@@ -16,6 +16,7 @@ import { NavHomeComponent } from './user/nav-home/nav-home.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AdminGuard } from './auth/admin.guard';
 import { ThanksForOrderComponent } from './user/thanks-for-order/thanks-for-order.component';
+import { AccountManagementComponent } from './user/account-management/account-management.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
     {path: 'register', component: RegisterComponent},
     {path: 'login', component: LoginComponent},
     {path: 'thankYou', component: ThanksForOrderComponent},
+    {path: 'account', component: AccountManagementComponent}
   ]},
   {path: 'admin', component: NavComponent, canActivate: [AdminGuard], children: [
     {path: '', component: DashboardComponent},

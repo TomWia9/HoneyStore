@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { faTable } from '@fortawesome/free-solid-svg-icons';
 import { Order } from '../../../shared/order';
-import { OrderModalComponent } from '../../order-modal/order-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { OrdersService } from 'src/app/services/orders.service';
+import { OrderModalComponent } from 'src/app/shared/order-modal/order-modal.component';
 
 @Component({
   selector: 'app-orders-table',

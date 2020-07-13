@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ViewContainerRef, ComponentRef, ComponentFactoryResolver } from '@angular/core';
-import { faSearch, faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faShoppingCart, faUser, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/auth/auth.service';
 import { CartDetailsComponent } from '../cart/cart-details/cart-details.component';
 @Component({
@@ -12,6 +12,7 @@ export class NavHomeComponent implements OnInit {
   faSearch = faSearch;
   faShoppingCart = faShoppingCart;
   faUser = faUser;
+  faSignInAlt = faSignInAlt;
   isLoggedIn: boolean;
   @ViewChild('dynamicCartDetailsComponent', {read: ViewContainerRef, static: false}) target: ViewContainerRef;
   private componentRef: ComponentRef<any>;

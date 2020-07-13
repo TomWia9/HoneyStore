@@ -1,0 +1,47 @@
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-4 mt-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <div class="d-flex w-100 justify-content-between">
+                            <div>
+                                <fa-icon [icon]="faTable"></fa-icon>
+                                Your orders
+                            </div>
+
+                            <div ngbDropdown class="d-inline-block">
+                                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{ tableToggle }}</button>
+                                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                    <button ngbDropdownItem (click)="onChange(0)">New</button>
+                                    <button ngbDropdownItem (click)="onChange(1)">Shipped</button>
+                                    <button ngbDropdownItem (click)="onChange(2)">Delivered</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <app-user-orders-table *ngIf="startComponent"></app-user-orders-table>
+                        <template #dynamicUserOrdersTableComponent></template>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <!-- <router-outlet></router-outlet> -->
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="py-4 bg-light mt-auto">
+    <div class="container-fluid">
+        <div class="d-flex align-items-center justify-content-between small">
+            <div class="text-muted">Copyright &copy; Tomasz Wiatrowski 2020</div>
+            <div>
+                <a href="#">Privacy Policy</a> &middot;
+                <a href="#">Terms &amp; Conditions</a>
+            </div>
+        </div>
+    </div>
+</footer>

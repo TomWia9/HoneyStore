@@ -16,7 +16,6 @@ import { HoneyModalComponent } from './admin/honey-modal/honey-modal.component';
 import { OrdersComponent } from './admin/orders/orders.component';
 import { OrdersTableComponent } from './admin/data-tables/orders-table/orders-table.component';
 import { AllOrdersTableComponent } from './admin/data-tables/all-orders-table/all-orders-table.component';
-import { OrderModalComponent } from './admin/order-modal/order-modal.component';
 import { StatisticsComponent } from './admin/statistics/statistics.component';
 import { PieChartComponent } from './admin/statistics/charts/pie-chart/pie-chart.component';
 import { WarehouseManagementComponent } from './admin/warehouse-management/warehouse-management.component';
@@ -38,6 +37,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { ThanksForOrderComponent } from './user/thanks-for-order/thanks-for-order.component';
+import { AccountManagementComponent } from './user/account-management/account-management.component';
+import { UserOrdersTableComponent } from './user/account-management/user-orders-table/user-orders-table.component';
+import { OrderModalComponent } from './shared/order-modal/order-modal.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +72,8 @@ import { ThanksForOrderComponent } from './user/thanks-for-order/thanks-for-orde
     RegisterComponent,
     ErrorPageComponent,
     ThanksForOrderComponent,
+    AccountManagementComponent,
+    UserOrdersTableComponent,
   ],
   imports: [
     BrowserModule,

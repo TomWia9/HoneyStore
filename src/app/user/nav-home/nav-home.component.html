@@ -7,9 +7,20 @@
 
     <div class="collapse navbar-collapse" id="mainmenu">
         <ul class="navbar-nav ml-auto">
+            <li class="nav-item mx-2">
+                <a class="nav-link" [routerLink]="['/account']" [routerLinkActive]="['active']">
+                    <span>
+                        Manage your account and orders
+                        <fa-icon class="ml-2" [icon]="faUser" size="lg"></fa-icon>
+                    </span>
+                </a>
+            </li>
             <li class="nav-item dropdown mx-2">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <fa-icon [icon]="faUser" size="lg"></fa-icon>
+                    <span>
+                        Sign in
+                        <fa-icon [icon]="faSignInAlt" size="lg"></fa-icon>
+                    </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownUser">
                     <app-login *ngIf="!isLoggedIn"></app-login>
@@ -18,7 +29,10 @@
             </li>
             <li class="nav-item dropdown mx-2">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownCartLink" (click)="onAddComponent()" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <fa-icon [icon]="faShoppingCart" size="lg"></fa-icon>
+                    <span>
+                       Cart
+                       <fa-icon [icon]="faShoppingCart" size="lg"></fa-icon>
+                   </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                     <template #dynamicCartDetailsComponent></template>
