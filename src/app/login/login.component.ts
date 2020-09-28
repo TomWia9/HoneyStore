@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   form: FormGroup;
   @Input() mini = false;
+  error = false;
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -21,15 +22,17 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit(){
+  onSubmit() {
     console.log(this.form);
     this.authService.login(this.form.value).subscribe(x => {
-      if(x){
-        if(this.authService.getCurrentUserValue().email === 'admin@admin'){
+      if (x) {
+        if (this.authService.getCurrentUserValue().email === 'admin@admin') {
           this.router.navigate(['/admin']);
-        } else if(this.authService.getCurrentUserValue().email !== null && this.authService.getCurrentUserValue().email !== 'admin@admin'){
+        } else if (this.authService.getCurrentUserValue().email !== null && this.authService.getCurrentUserValue().email !== 'admin@admin') {
           this.router.navigate(['']);
         }
+      } else {
+        this.error = true;
       }
     });
   }

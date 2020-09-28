@@ -4,6 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { Address } from '../shared/address';
 import { Register } from '../shared/register';
 import { UsersService } from '../services/users.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
+import { Login } from '../auth/login';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +16,7 @@ import { UsersService } from '../services/users.service';
 export class RegisterComponent implements OnInit {
   form: FormGroup;
   error: boolean;
-  constructor(private http: HttpClient, private usersService: UsersService) { }
+  constructor(private http: HttpClient, private usersService: UsersService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -47,8 +50,18 @@ export class RegisterComponent implements OnInit {
        () => {
         this.form.reset();
         this.error = false;
-       } ,
+
+        const login: Login = {
+          email: register.email,
+          password: register.password
+        };
+
+        this.authService.login(login).subscribe(() => {
+              this.router.navigate(['']);
+            });
+          },
+
        () => this.error = true
-      );
-  }
+        )
+  };
 }

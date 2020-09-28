@@ -27,7 +27,7 @@ const routes: Routes = [
     {path: 'register', component: RegisterComponent},
     {path: 'login', component: LoginComponent},
     {path: 'thankYou', component: ThanksForOrderComponent},
-    {path: 'account', component: AccountManagementComponent}
+    {path: 'account', component: AccountManagementComponent, canActivate: [AuthGuard]}
   ]},
   {path: 'admin', component: NavComponent, canActivate: [AdminGuard], children: [
     {path: '', component: DashboardComponent},
