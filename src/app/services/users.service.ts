@@ -24,4 +24,8 @@ export class UsersService {
     return this.htpp.get<Client>(`https://localhost:5001/api/clients/getClient/${clientId}`, {observe: 'response'});
   }
 
+  ChangeAddress(clientId: number, address: Address): Observable<HttpResponse<any>>{
+    return this.htpp.put<any>(`https://localhost:5001/api/clients/changeClientAddress/${clientId}`, address, {observe: 'response'});
+  }
+
 }

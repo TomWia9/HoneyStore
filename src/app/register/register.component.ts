@@ -16,7 +16,7 @@ import { Login } from '../auth/login';
 export class RegisterComponent implements OnInit {
   form: FormGroup;
   error: boolean;
-  constructor(private http: HttpClient, private usersService: UsersService, private authService: AuthService, private router: Router) { }
+  constructor(private usersService: UsersService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({

@@ -40,6 +40,8 @@ import { ThanksForOrderComponent } from './user/thanks-for-order/thanks-for-orde
 import { AccountManagementComponent } from './user/account-management/account-management.component';
 import { UserOrdersTableComponent } from './user/account-management/user-orders-table/user-orders-table.component';
 import { OrderModalComponent } from './shared/order-modal/order-modal.component';
+import { SettingsComponent } from './user/account-management/settings/settings.component';
+import { ChangeAddressModalComponent } from './user/change-address-modal/change-address-modal.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +76,8 @@ import { OrderModalComponent } from './shared/order-modal/order-modal.component'
     ThanksForOrderComponent,
     AccountManagementComponent,
     UserOrdersTableComponent,
+    SettingsComponent,
+    ChangeAddressModalComponent,
   ],
   imports: [
     BrowserModule,

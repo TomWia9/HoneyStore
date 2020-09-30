@@ -6,7 +6,7 @@ import { Client } from 'src/app/shared/client';
 import { Delivery } from '../delivery';
 import { Payment } from '../payment';
 import { OrdersService } from 'src/app/services/orders.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-modal',
