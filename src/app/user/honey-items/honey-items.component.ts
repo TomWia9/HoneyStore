@@ -23,6 +23,8 @@ export class HoneyItemsComponent implements OnInit {
   ngOnInit(): void {
     this.honeysService.getHoneysList().subscribe(x => {
       this.honeys = x.body;
+      console.log(x);
+      
     });
     this.authService.currentUser.subscribe(x => {
       this.isLoggedIn = x !== null;

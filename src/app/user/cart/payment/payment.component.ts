@@ -11,6 +11,8 @@ import { Honey } from 'src/app/shared/honey';
 import { Delivery } from 'src/app/shared/delivery';
 import { Payment } from 'src/app/shared/payment';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ChangeAddressModalComponent } from '../../change-address-modal/change-address-modal.component';
 
 @Component({
   selector: 'app-payment',
@@ -27,7 +29,7 @@ export class PaymentComponent implements OnInit {
   outOfStock = false;
 
   constructor(private cartService: CartService, private ordersService: OrdersService, private authService: AuthService,
-              private usersService: UsersService, private router: Router) { }
+              private usersService: UsersService, private router: Router, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -90,6 +92,11 @@ export class PaymentComponent implements OnInit {
       case '1': return Payment.CreditCard;
       case '2': return Payment.BLIK;
     }
+  }
+
+  onChangeAddress() {
+    const modalRef = this.modalService.open(ChangeAddressModalComponent, { size: 'xl', scrollable: true });
+    modalRef.componentInstance.userId = this.clientId;
   }
 
 }
