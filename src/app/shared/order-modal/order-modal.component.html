@@ -29,10 +29,6 @@
                         </div>
                     </li>
                 </ul>
-
-                <button class="btn btn-primary" *ngIf="order.status === 0 && client.email === 'admin@admin'" (click)="onSend()">Send the order</button>
-                <button class="btn btn-warning" *ngIf="order.status === 0 && client.email !== 'admin@admin'" (click)="onCancel()">Cancel the order</button>
-
             </div>
 
             <div class="col-lg-6 mb-4">
@@ -56,6 +52,8 @@
                         <p class="mb-0">{{ payment }}</p>
                     </li>
                 </ul>
+                <button class="btn btn-primary" *ngIf="order.status === 0 && client.email === 'admin@admin'" (click)="onSend()">Send the order</button>
+                <button class="btn btn-warning" *ngIf="order.status === 0 && client.email !== 'admin@admin'" (click)="onCancel()">Cancel the order</button>
             </div>
         </div>
     </div>

@@ -13,11 +13,11 @@
                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
                     <h6 class="text-success">In stock: {{honey.amount}}</h6>
                 </div>
-                <div class="card-footer d-flex align-items-center justify-content-between" (click)="onAddToCart(honey)" role="button">
-                    <a role="button">
+                <div class="card-footer text-center">
+                    <button class="btn btn-primary w-100 h-100" ngbPopover="Successfully added to the cart" placement="top" (click)="onAddToCart(honey)">
                         <h6> Add to cart</h6>
-                    </a>
-                    <fa-icon [icon]="faShoppingCart"></fa-icon>
+                        <fa-icon [icon]="faShoppingCart"></fa-icon>
+                    </button>
                 </div>
             </div>
         </div>
