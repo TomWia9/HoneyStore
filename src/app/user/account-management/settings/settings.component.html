@@ -23,10 +23,43 @@
 
             <ngb-tab>
                 <ng-template ngbTabTitle><b>Password</b></ng-template>
-                <ng-template ngbTabContent>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
-                    <p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum
-                        PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard
-                        ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+                <ng-template ngbTabContent>
+                    <form [formGroup]="form" (ngSubmit)="onChangePassword()">
+                        <div class="form-group">
+                            <input type="password" class="form-control" formControlName="oldPassword" id="clientOldPassword" placeholder="Old password">
+                            <span *ngIf="!form.get('oldPassword').valid && form.get('oldPassword').touched" class="help-block text-danger">Please enter an old password</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" formControlName="newPassword" id="clientNewPassword" placeholder="New password">
+                            <span *ngIf="!form.get('newPassword').valid && form.get('newPassword').touched" class="help-block text-danger">Please enter a new password (min. 5 symbols)!</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" formControlName="passwordRepeat" id="passwordRepeat" placeholder="Password">
+                            <div class="d-flex flex-column">
+                                <span *ngIf="!form.get('passwordRepeat').valid && form.get('passwordRepeat').touched" class="help-block text-danger">Please repeat a new password (min. 5 symbols)!</span>
+                                <span *ngIf="form.get('newPassword').value !== form.get('passwordRepeat').value" class="help-block text-danger">Passwords do not match!</span>
+                            </div>
+                        </div>
+                        <div *ngIf="!form.valid && form.get('passwordRepeat').touched" class="card border-danger my-4 mx-auto" style="max-width: 18rem;">
+                            <div class="card-header">Error</div>
+                            <div class="card-body text-danger">
+                                <p class="card-text">Check that all fields are correctly completed</p>
+                            </div>
+                        </div>
+                        <div *ngIf="error === true" class="card border-danger my-4 mx-auto" style="max-width: 18rem;">
+                            <div class="card-header">Error</div>
+                            <div class="card-body text-danger">
+                                <p class="card-text">Sorry something went wrong, make sure that old password is correct or try again later</p>
+                            </div>
+                        </div>
+                        <div *ngIf="error === false" class="card border-success my-4 mx-auto" style="max-width: 18rem;">
+                            <div class="card-header">Success</div>
+                            <div class="card-body text-success">
+                                <p class="card-text">Password has been changed</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit" [disabled]="!form.valid || form.get('newPassword').value !== form.get('passwordRepeat').value ">Change your password</button>
+                    </form>
                 </ng-template>
             </ngb-tab>
 

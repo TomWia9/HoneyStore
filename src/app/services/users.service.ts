@@ -4,6 +4,7 @@ import { Register } from '../shared/register';
 import { Observable } from 'rxjs';
 import { Address } from '../shared/address';
 import { Client } from '../shared/client';
+import { NewPassword } from '../shared/newPassword';
 
 @Injectable({
   providedIn: 'root'
@@ -28,4 +29,7 @@ export class UsersService {
     return this.htpp.put<any>(`https://localhost:5001/api/clients/changeClientAddress/${clientId}`, address, {observe: 'response'});
   }
 
+  ChangePassword(clientId: number, newPassword: NewPassword): Observable<HttpResponse<any>>{
+    return this.htpp.patch<any>(`https:localhost:5001/api/clients/changeClientPassword/${clientId}`, newPassword, {observe: 'response'});
+  }
 }
