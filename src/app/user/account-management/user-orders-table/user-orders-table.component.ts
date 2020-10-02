@@ -23,16 +23,12 @@ export class UserOrdersTableComponent implements OnInit {
   collectionSize: number;
   faTable = faTable;
   clientId: number;
-  client: Client;
-  address: Address;
 
-  constructor(private modalService: NgbModal, private ordersService: OrdersService, private authService: AuthService,
-              private usersService: UsersService) {}
+  constructor(private modalService: NgbModal, private ordersService: OrdersService, private authService: AuthService) {}
 
   ngOnInit(): void {
 
     this.clientId = this.authService.getCurrentUserValue().id;
-    this.getClientData();
 
     this.ordersService.getClientOrders(this.clientId, this.status).subscribe(x => {
       this.ordersList = x.body;
@@ -49,18 +45,5 @@ export class UserOrdersTableComponent implements OnInit {
   onOpen(order: Order) {
     const modalRef = this.modalService.open(OrderModalComponent, { size: 'xl', scrollable: true });
     modalRef.componentInstance.order = order;
-    modalRef.componentInstance.client = this.client;
-    modalRef.componentInstance.address = this.address;
   }
-
- async getClientData() {
-   await this.usersService.GetClientAddress(this.clientId).toPromise().then(x => {
-      this.address = x.body;
-    });
-
-   await this.usersService.GetClient(this.clientId).toPromise().then(x => {
-      this.client = x.body;
-    });
-  }
-
 }

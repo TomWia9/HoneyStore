@@ -7,6 +7,7 @@ import { Delivery } from '../delivery';
 import { Payment } from '../payment';
 import { OrdersService } from 'src/app/services/orders.service';
 import { Router } from '@angular/router';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-order-modal',
@@ -16,15 +17,17 @@ import { Router } from '@angular/router';
 export class OrderModalComponent implements OnInit {
 
   @Input() order: Order;
-  @Input() address: Address;
-  @Input() client: Client;
+  // address: Address = new Address();
+  // client: Client = new Client();
   delivery;
   payment;
 
-  constructor(public activeModal: NgbActiveModal, private ordersService: OrdersService, private router: Router) {}
+  constructor(public activeModal: NgbActiveModal, private ordersService: OrdersService, //private usersService: UsersService,
+              private router: Router) {}
   ngOnInit(): void {
     this.delivery = Delivery[this.order.delivery];
     this.payment = Payment[this.order.payment];
+    //this.getClientData();
   }
 
   // only admin
@@ -42,8 +45,16 @@ export class OrderModalComponent implements OnInit {
       this.router.navigate(['/account']);
   }); 
     this.activeModal.close();
-
-
   }
+
+  // async getClientData() {
+  //   await this.usersService.GetClientAddress(this.order.clientId).toPromise().then(x => {
+  //      this.address = x.body;
+  //    });
+ 
+  //   await this.usersService.GetClient(this.order.clientId).toPromise().then(x => {
+  //      this.client = x.body;
+  //    });
+  //  }
 
 }

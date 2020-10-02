@@ -18,13 +18,16 @@ export class AllOrdersTableComponent implements OnInit {
   ordersList: Order[] = [];
   collectionSize: number;
 
-  constructor(private modalService: NgbModal, private ordersService: OrdersService){}
+  constructor(private modalService: NgbModal, private ordersService: OrdersService) {}
 
   ngOnInit(): void {
 
     this.ordersService.getOrders(true, 0).subscribe(x => {
       this.ordersList = x.body;
-    })
+      console.log(x.body);
+
+    });
+
 
     this.collectionSize = this.ordersList.length;
 
@@ -36,7 +39,9 @@ export class AllOrdersTableComponent implements OnInit {
       .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
   }
 
-  open(order: Order){
+  open(order: Order) {
+    console.log(this.ordersList);
+
     const modalRef = this.modalService.open(OrderModalComponent, { size: 'xl', scrollable: true });
     modalRef.componentInstance.order = order;
   }
