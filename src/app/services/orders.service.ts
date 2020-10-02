@@ -30,4 +30,8 @@ export class OrdersService {
   cancelTheOrder(orderId: number): Observable<HttpResponse<any>>{
     return this.http.delete<any>(`https://localhost:5001/api/orders/cancelTheOrder/${orderId}`, {observe: 'response'});
   }
+
+  sendTheOrder(orderId: number): Observable<HttpResponse<any>>{
+    return this.http.patch<any>(`https://localhost:5001/api/orders/sendTheOrder/${orderId}`, {observe: 'response'});
+  }
 }

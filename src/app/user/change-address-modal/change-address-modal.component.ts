@@ -37,8 +37,10 @@ export class ChangeAddressModalComponent implements OnInit {
       () => {
        this.form.reset();
        this.error = false;
+       this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/account']);
+    });
        this.activeModal.close();
-       this.router.navigate(['/home']);
          },
 
       () => this.error = true
