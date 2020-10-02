@@ -54,6 +54,7 @@
                 </ul>
                 <button class="btn btn-primary" *ngIf="order.status === 0 && admin === true" (click)="onSend()">Send the order</button>
                 <button class="btn btn-warning" *ngIf="order.status === 0 && admin === false" (click)="onCancel()">Cancel the order</button>
+                <button class="btn btn-success" *ngIf="order.status === 1 && admin === false" (click)="onConfirmDelivery()">Confirm delivery</button>
             </div>
         </div>
     </div>

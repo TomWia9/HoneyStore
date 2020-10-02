@@ -34,4 +34,8 @@ export class OrdersService {
   sendTheOrder(orderId: number): Observable<HttpResponse<any>>{
     return this.http.patch<any>(`https://localhost:5001/api/orders/sendTheOrder/${orderId}`, {observe: 'response'});
   }
+
+  confirmDelivery(orderId: number): Observable<HttpResponse<any>>{
+    return this.http.patch<any>(`https://localhost:5001/api/orders/confirmDelivery/${orderId}`, {observe: 'response'});
+  }
 }

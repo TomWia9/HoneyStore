@@ -28,21 +28,32 @@ export class OrderModalComponent implements OnInit {
     this.admin = this.authService.getCurrentUserValue().email === 'admin@admin';
   }
 
-  // only admin
+  // only admin when status of order is new
   onSend() {
      this.ordersService.sendTheOrder(this.order.id).subscribe();
      this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
       this.router.navigate(['/admin/orders']);
     });
-     this.activeModal.close();
+    this.activeModal.close();
   }
 
+  //only user when order is not shipped yet (when status is new)
   onCancel() {
     console.log('order, ', + this.order.id + ' canceled');
     this.ordersService.cancelTheOrder(this.order.id).subscribe();
     this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
       this.router.navigate(['/account']);
-  });
+    });
     this.activeModal.close();
-}
+  }
+
+  //only user when shipped
+  onConfirmDelivery() {
+    this.ordersService.confirmDelivery(this.order.id).subscribe();
+    this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/account']);
+    });
+    this.activeModal.close();
+ }
+
 }

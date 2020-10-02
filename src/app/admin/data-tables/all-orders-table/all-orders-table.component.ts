@@ -4,6 +4,7 @@ import { faTable } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { OrdersService } from 'src/app/services/orders.service';
 import { OrderModalComponent } from 'src/app/shared/order-modal/order-modal.component';
+import { Status } from 'src/app/shared/status';
 
 @Component({
   selector: 'app-all-orders-table',
@@ -17,6 +18,7 @@ export class AllOrdersTableComponent implements OnInit {
   faTable = faTable;
   ordersList: Order[] = [];
   collectionSize: number;
+  status: Status;
 
   constructor(private modalService: NgbModal, private ordersService: OrdersService) {}
 
@@ -44,5 +46,13 @@ export class AllOrdersTableComponent implements OnInit {
 
     const modalRef = this.modalService.open(OrderModalComponent, { size: 'xl', scrollable: true });
     modalRef.componentInstance.order = order;
+  }
+
+   getStatus(status: number) {
+    switch (status) {
+      case 0: {return 'New'; }
+      case 1: {return 'Shipped'; }
+      case 2: {return 'Delivered';}
+    }
   }
 }
