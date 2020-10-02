@@ -21,14 +21,21 @@
             </li>
         </ul>
 
-        <form class="form-inline">
-            <input class="form-control" type="search" placeholder="Wyszukaj" aria-label="Wyszukaj">
-            <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                    <fa-icon [icon]="faSearch"></fa-icon>
-                </button>
-            </div>
-        </form>
+        <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link btn" (click)="onSignOut()">
+                        <span>
+                            Sign out
+                            <fa-icon [icon]="faSignOutAlt" size="lg"></fa-icon>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+
     </div>
 </nav>
 

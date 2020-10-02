@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {  faSearch } from '@fortawesome/free-solid-svg-icons';
+import {  faSearch, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,11 +9,15 @@ import {  faSearch } from '@fortawesome/free-solid-svg-icons';
 })
 export class NavComponent implements OnInit {
 
-  faSearch = faSearch;
+  faSignOutAlt = faSignOutAlt;
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+  }
+
+  onSignOut(){
+    this.authService.logout();
   }
 
 }
