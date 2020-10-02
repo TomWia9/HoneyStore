@@ -4,6 +4,7 @@ import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HoneyAddModalComponent } from '../honey-add-modal/honey-add-modal.component';
 import { HoneysService } from 'src/app/services/honeys.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-honey-list',
@@ -14,8 +15,9 @@ export class HoneyListComponent implements OnInit {
   faWindowClose = faWindowClose;
   allowDelete = false;
   honeys: Honey[];
+  err;
 
-  constructor(private modalService: NgbModal, private honeysService: HoneysService) { }
+  constructor(private modalService: NgbModal, private honeysService: HoneysService, private router: Router) { }
 
   ngOnInit(): void {
     this.honeysService.getHoneysList().subscribe(x => {
@@ -23,9 +25,16 @@ export class HoneyListComponent implements OnInit {
     });
   }
 
-  onDelete(honeyID: number){
-    console.log(honeyID);
-    // honeyService.deleteHoney(honeyID);    
+  onDelete(honeyId: number){
+     this.honeysService.removeHoney(honeyId).subscribe(() => {
+      this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/admin/warehouse']);
+    });
+      
+     }, 
+     () => {
+       alert('Something wen wrong, try again later');
+     });
   }
 
   onAllowDelete(){
@@ -33,7 +42,7 @@ export class HoneyListComponent implements OnInit {
   }
 
   onAdd(){
-    const modalRef = this.modalService.open(HoneyAddModalComponent, { scrollable: true });
+    this.modalService.open(HoneyAddModalComponent, { scrollable: true });
   }
 
 }

@@ -1,4 +1,4 @@
-export interface Honey{
+export class Honey{
     id: number;
     name: string;
     amount: number; //for cards it will be amount in warehouse, anywhere else amount of bought items

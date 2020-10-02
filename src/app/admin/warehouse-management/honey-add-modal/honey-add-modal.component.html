@@ -26,6 +26,18 @@
             <label for="inputImage">Add an image of honey</label>
             <input formControlName="honeyImage" type="file" class="form-control-file" id="inputImage">
         </div>
+        <div *ngIf="!form.valid && form.get('amount').touched" class="card border-danger my-4 mx-auto" style="max-width: 18rem;">
+            <div class="card-header">Error</div>
+            <div class="card-body text-danger">
+                <p class="card-text">Check that all fields are correctly completed</p>
+            </div>
+        </div>
+        <div *ngIf="err === true" class="card border-danger my-4 mx-auto" style="max-width: 18rem;">
+            <div class="card-header">Error</div>
+            <div class="card-body text-danger">
+                <p class="card-text">Something went wrong, try again later</p>
+            </div>
+        </div>
         <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Add honey</button>
     </form>
 </div>

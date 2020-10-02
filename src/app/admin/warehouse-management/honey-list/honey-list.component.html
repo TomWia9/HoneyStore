@@ -4,13 +4,16 @@
     </div>
     <div class="card-body">
         <div class="list-group" *ngFor="let honey of honeys; let i = index">
-            <a [routerLink]="['honey', i]" class="list-group-item list-group-item-action justify-content-between d-flex w-100" routerLinkActive="active">
-                <p>{{ honey.name }}</p>
+            <div class="list-group-item list-group-item-action justify-content-between d-flex w-100 mb-2" routerLinkActive="active">
+                <a [routerLink]="['honey', honey.id]" class="w-100 h-100 text-dark text-decoration-none">
+                    <h6>{{ honey.name }}</h6>
+                </a>
                 <ng-container *ngIf="allowDelete === true">
-                    <fa-icon [icon]="faWindowClose" size="lg" [styles]="{'stroke': '#d9534f', 'color': '#d9534f'}" role="button" (click)="onDelete(honey.id)"></fa-icon>
+                    <a role="button" (click)="onDelete(honey.id)">
+                        <fa-icon [icon]="faWindowClose" size="lg" [styles]="{'stroke': '#d9534f', 'color': '#d9534f'}"></fa-icon>
+                    </a>
                 </ng-container>
-            </a>
-
+            </div>
         </div>
     </div>
     <div class="card-footer d-flex align-items-center justify-content-center " role="button">

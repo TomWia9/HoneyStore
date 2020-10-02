@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Honey } from 'src/app/shared/honey';
 import { HoneysService } from 'src/app/services/honeys.service';
+import { Honey } from 'src/app/shared/honey';
 
 @Component({
   selector: 'app-honey-detail',
@@ -10,35 +10,21 @@ import { HoneysService } from 'src/app/services/honeys.service';
 })
 export class HoneyDetailComponent implements OnInit {
 
-  index: number;
+  honeyId: number;
   err = false;
-  honeys: Honey[];
-  honey: Honey;
+  honey: Honey = new Honey();
 
   constructor(private route: ActivatedRoute, private router: Router, private honeysService: HoneysService) { }
 
   ngOnInit(): void {
 
-   this.honeysService.getHoneysList().subscribe(x => {
-     this.honeys = x.body;
-   });
-
-
-   this.route.params.subscribe(
-      (params: Params) => {
-        this.index = +params.index;
-
-        if (this.index >= this.honeys.length) {
-          this.err = true;
-          this.router.navigate(['not-found']);
-        } else {
-          this.honey = this.honeys[this.index];
-        }
-      }
-    );
-
-    // honey = honeyService.getHoney(this.id);
-
+      this.route.params.subscribe(
+        (params: Params) => {
+         this.honeyId = +params.index;
+         this.honeysService.getHoney(this.honeyId).subscribe(x => {
+           this.honey = x.body;
+         });
+       }
+     );
   }
-
-}
+   }

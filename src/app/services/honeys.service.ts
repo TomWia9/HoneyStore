@@ -14,8 +14,16 @@ export class HoneysService {
     return this.http.get<Honey[]>('https://localhost:5001/api/warehouse/getAllHoneys', {observe: 'response'});
   }
 
+  getHoney(honeyId): Observable<HttpResponse<Honey>>{
+    return this.http.get<Honey>(`https://localhost:5001/api/warehouse/getHoney/${honeyId}`, {observe: 'response'});
+  }
+
   addHoney(honey: Honey): Observable<HttpResponse<Honey>>{
-    return this.http.post<Honey>('https://localhost:5001/api/cart/', honey, {observe: 'response'});
+    return this.http.post<Honey>('https://localhost:5001/api/warehouse/addHoney', honey, {observe: 'response'});
+  }
+
+  removeHoney(honeyId: number): Observable<HttpResponse<any>>{
+    return this.http.delete<any>(`https://localhost:5001/api/warehouse/removeHoney/${honeyId}`, {observe: 'response'});
   }
 
 }
