@@ -1,19 +1,29 @@
 <div class="row ">
-    <ng-container *ngFor="let honey of honeys">
-        <div class="col-xl-3 col-md-6">
-            <div class="card text-white mb-4" [ngClass]="{
-                'bg-success': honey.amount>=1000,
-                'bg-primary': honey.amount >=500 && honey.amount < 1000,
-                'bg-warning': honey.amount >=100 && honey.amount < 500,
-                'bg-danger': honey.amount < 100 }">
-                <div class="card-body">{{ honey.name }}</div>
-                <div class="card-footer d-flex align-items-center justify-content-between" (click)="open(honey)" role="button">
-                    <a class="small text-white">View Details</a>
-                    <div class="small text-white">
-                        <fa-icon [icon]="faAngleRight"></fa-icon>
+    <div class="col-xl-12">
+        <div class="card mb-4">
+            <div class="card-header">
+                <fa-icon [icon]="faWarehouse"></fa-icon>
+                Amount of honeys in the warehouse
+            </div>
+            <div class="card-body d-flex justify-content-between flex-wrap">
+                <ng-container *ngFor="let honey of honeys">
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card text-white mb-4" [ngClass]="{
+                                'bg-success': honey.amount>=1000,
+                                'bg-primary': honey.amount >=500 && honey.amount < 1000,
+                                'bg-warning': honey.amount >=100 && honey.amount < 500,
+                                'bg-danger': honey.amount < 100 }">
+                            <div class="card-body">{{ honey.name }}</div>
+                            <div class="card-footer d-flex align-items-center justify-content-between" (click)="open(honey)" role="button">
+                                <a class="small text-white">View Details</a>
+                                <div class="small text-white">
+                                    <fa-icon [icon]="faAngleRight"></fa-icon>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </ng-container>
             </div>
         </div>
-    </ng-container>
+    </div>
 </div>
