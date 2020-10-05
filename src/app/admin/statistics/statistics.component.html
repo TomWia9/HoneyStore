@@ -5,8 +5,6 @@
                 <h1 class="h3">Statistics</h1>
             </li>
         </ol>
-
-
         <div class="row">
             <div class="col-lg-6">
                 <div class="card mb-4">
@@ -29,7 +27,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <app-pie-chart [chartData]="pieChartData" [chartLabels]="pieChartLabels"></app-pie-chart>
+                        <template #dynamicPieChartComponent></template>
                     </div>
                 </div>
             </div>
@@ -47,14 +45,14 @@
                                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                                     <button ngbDropdownItem (click)="change(2, 'Week')">Week</button>
                                     <button ngbDropdownItem (click)="change(2, 'Month')">Month</button>
-                                    <button ngbDropdownItem (click)="change(3, 'Year')">Year</button>
+                                    <button ngbDropdownItem (click)="change(2, 'Year')">Year</button>
                                 </div>
                             </div>
 
                         </div>
                     </div>
                     <div class="card-body">
-                        <app-bar-chart [chartData]="barChartData" [chartLabels]="barChartLabels"></app-bar-chart>
+                        <template #dynamicBarChartComponent></template>
                     </div>
                 </div>
             </div>
@@ -66,7 +64,7 @@
                         <div class="d-flex w-100 justify-content-between">
                             <div>
                                 <fa-icon [icon]="faChartArea"></fa-icon>
-                                Daily area chart
+                                Area chart
                             </div>
 
                             <div ngbDropdown class="d-inline-block">
@@ -81,7 +79,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <app-area-chart [chartData]="areaChartData" [chartLabels]="areaChartLabels"></app-area-chart>
+                        <template #dynamicAreaChartComponent></template>
                     </div>
                 </div>
             </div>

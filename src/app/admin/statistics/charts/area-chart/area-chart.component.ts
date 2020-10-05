@@ -5,12 +5,16 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './area-chart.component.html',
   styleUrls: ['./area-chart.component.css']
 })
-export class AreaChartComponent {
+export class AreaChartComponent implements OnInit {
 
-  @Input() chartData: any [];
-  @Input() chartLabels: string [];
+  @Input() data: number [];
+  @Input() labels: string [];
+  chartData: any[] = [];
 
   constructor() { }
+  ngOnInit(): void {
+    this.chartData = [{data: this.data}]
+  }
 
   public chartType = 'line';
   public chartLegend = false;

@@ -5,18 +5,19 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './bar-chart.component.html',
   styleUrls: ['./bar-chart.component.css']
 })
-export class BarChartComponent {
-
-  @Input() chartData: any [];
-  @Input() chartLabels: string [];
+export class BarChartComponent implements OnInit {
 
   constructor() { }
+
+  @Input() data: number [];
+  @Input() labels: string [];
+  barChartData: any[] = [];
 
   public chartType = 'bar';
   public chartLegend = false;
   public chartColors: any[] = [{
-      backgroundColor: "rgba(2,117,216,1)",
-      borderColor: "rgba(2,117,216,1)",
+      backgroundColor: 'rgba(2,117,216,1)',
+      borderColor: 'rgba(2,117,216,1)',
 
   }];
   public chartOptions: any = {
@@ -45,5 +46,8 @@ export class BarChartComponent {
       }],
     },
 };
+  ngOnInit(): void {
+    this.barChartData = [{data: this.data}];
+  }
 
 }

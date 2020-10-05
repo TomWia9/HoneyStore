@@ -5,10 +5,10 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './pie-chart.component.html',
   styleUrls: ['./pie-chart.component.css']
 })
-export class PieChartComponent {
+export class PieChartComponent{ 
 
-  @Input() chartData: any [];
-  @Input() chartLabels: string [];
+  @Input() data: number [];
+  @Input() labels: string [];
 
   colors: any[] = [
     {

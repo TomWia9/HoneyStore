@@ -1,6 +1,5 @@
 <main>
     <div class="container">
-
         <ol class="breadcrumb mb-4 mt-4">
             <li class="breadcrumb-item active justify-content-center">
                 <h1 class="h3">Dashboard</h1>
@@ -14,12 +13,10 @@
                 <div class="card mb-4">
                     <div class="card-header">
                         <fa-icon [icon]="faChartArea"></fa-icon>
-
-                        Daily area chart
+                        Daily number of orders
                     </div>
                     <div class="card-body">
-                        <!-- <canvas id="myAreaChart" width="100%" height="40"></canvas> -->
-                        <app-area-chart [chartData]="areaChartData" [chartLabels]="areaChartLabels"></app-area-chart>
+                        <template #dynamicAreaChartComponent></template>
                     </div>
                 </div>
             </div>
@@ -27,11 +24,10 @@
                 <div class="card mb-4">
                     <div class="card-header">
                         <fa-icon [icon]="faChartBar"></fa-icon>
-                        Monthly bar chart
+                        Daily number of orders
                     </div>
                     <div class="card-body">
-                        <!-- <canvas id="myBarChart" width="100%" height="40"></canvas> -->
-                        <app-bar-chart [chartData]="barChartData" [chartLabels]="barChartLabels"></app-bar-chart>
+                        <template #dynamicBarChartComponent></template>
                     </div>
                 </div>
             </div>
