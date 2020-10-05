@@ -42,6 +42,7 @@ import { UserOrdersTableComponent } from './user/account-management/user-orders-
 import { OrderModalComponent } from './shared/order-modal/order-modal.component';
 import { SettingsComponent } from './user/account-management/settings/settings.component';
 import { ChangeAddressModalComponent } from './user/change-address-modal/change-address-modal.component';
+import { UploadComponent } from './upload/upload.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { ChangeAddressModalComponent } from './user/change-address-modal/change-
     UserOrdersTableComponent,
     SettingsComponent,
     ChangeAddressModalComponent,
+    UploadComponent,
   ],
   imports: [
     BrowserModule,

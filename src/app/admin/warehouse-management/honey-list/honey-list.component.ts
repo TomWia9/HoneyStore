@@ -5,6 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HoneyAddModalComponent } from '../honey-add-modal/honey-add-modal.component';
 import { HoneysService } from 'src/app/services/honeys.service';
 import { Router } from '@angular/router';
+import { HoneyInTheWarehouse } from 'src/app/shared/honeyInTheWarehouse';
 
 @Component({
   selector: 'app-honey-list',
@@ -14,7 +15,7 @@ import { Router } from '@angular/router';
 export class HoneyListComponent implements OnInit {
   faWindowClose = faWindowClose;
   allowDelete = false;
-  honeys: Honey[];
+  honeys: HoneyInTheWarehouse[];
   err;
 
   constructor(private modalService: NgbModal, private honeysService: HoneysService, private router: Router) { }

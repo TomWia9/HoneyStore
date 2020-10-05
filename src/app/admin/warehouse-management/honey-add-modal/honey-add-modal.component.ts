@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { HoneysService } from 'src/app/services/honeys.service';
-import { Honey } from 'src/app/shared/honey';
 import { Router } from '@angular/router';
+import { HoneyInTheWarehouse } from 'src/app/shared/honeyInTheWarehouse';
 
 @Component({
   selector: 'app-honey-add-modal',
@@ -13,6 +13,9 @@ import { Router } from '@angular/router';
 export class HoneyAddModalComponent implements OnInit {
   form: FormGroup;
   err: boolean = null;
+  honey: HoneyInTheWarehouse = new HoneyInTheWarehouse();
+  public response: {dbPath: ''};
+  uploaded = false;
   constructor(public activeModal: NgbActiveModal, private honeysService: HoneysService, private router: Router) { }
 
   ngOnInit(): void {
@@ -20,13 +23,22 @@ export class HoneyAddModalComponent implements OnInit {
       name: new FormControl(null, Validators.required),
       price: new FormControl(null, Validators.required),
       amount: new FormControl(null, Validators.required),
-      honeyImage: new FormControl(null),
     });
   }
 
   onSubmit() {
     console.log(this.form);
-    this.honeysService.addHoney(this.form.value as Honey).subscribe(() => {this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+
+    this.honey = {
+      id: null,
+      name: this.form.value.name,
+      price: this.form.value.price,
+      amount: this.form.value.amount,
+      imgPath: this.response.dbPath
+    };
+    
+
+    this.honeysService.addHoney(this.honey).subscribe(() => {this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
         this.router.navigate(['/admin/warehouse']);
       });
         this.activeModal.close();
@@ -34,6 +46,11 @@ export class HoneyAddModalComponent implements OnInit {
         () => {
          this.err = true;
         });
+  }
+
+  public uploadFinished = (event) => {
+    this.response = event;
+    this.uploaded = true;
   }
 
 }

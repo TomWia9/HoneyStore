@@ -3,5 +3,5 @@ export class Honey{
     name: string;
     amount: number; //for cards it will be amount in warehouse, anywhere else amount of bought items
     price: number;
-    //image
+    
 }

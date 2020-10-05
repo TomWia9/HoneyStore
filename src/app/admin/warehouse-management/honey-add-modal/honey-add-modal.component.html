@@ -22,22 +22,19 @@
             <input formControlName="amount" type="number" class="form-control" id="inputAmount" placeholder="Enter amount of honeys">
             <span *ngIf="!form.get('amount').valid && form.get('amount').touched" class="help-block text-danger">Please enter an amount of honeys!</span>
         </div>
-        <div class="form-group">
-            <label for="inputImage">Add an image of honey</label>
-            <input formControlName="honeyImage" type="file" class="form-control-file" id="inputImage">
-        </div>
-        <div *ngIf="!form.valid && form.get('amount').touched" class="card border-danger my-4 mx-auto" style="max-width: 18rem;">
+        <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
+        <div *ngIf="(!form.valid || !uploaded) && form.get('amount').touched" class="card border-danger my-4 mx-auto" style="max-width: 18rem;">
             <div class="card-header">Error</div>
             <div class="card-body text-danger">
-                <p class="card-text">Check that all fields are correctly completed</p>
+                <p class="card-text">Check that all fields are correctly completed and make sure that you've uploaded image</p>
             </div>
         </div>
         <div *ngIf="err === true" class="card border-danger my-4 mx-auto" style="max-width: 18rem;">
             <div class="card-header">Error</div>
             <div class="card-body text-danger">
-                <p class="card-text">Something went wrong, try again later</p>
+                <p class="card-text">Something went wrong, check if name already exists or try again later</p>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Add honey</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!form.valid || !uploaded">Add honey</button>
     </form>
 </div>

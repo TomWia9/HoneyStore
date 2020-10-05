@@ -5,6 +5,7 @@ import { CartService } from 'src/app/services/cart.service';
 import { HoneysService } from 'src/app/services/honeys.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Router } from '@angular/router';
+import { HoneyInTheWarehouse } from 'src/app/shared/honeyInTheWarehouse';
 
 @Component({
   selector: 'app-honey-items',
@@ -14,7 +15,7 @@ import { Router } from '@angular/router';
 export class HoneyItemsComponent implements OnInit {
 
   faShoppingCart = faShoppingCart;
-  honeys: Honey[] = [];
+  honeys: HoneyInTheWarehouse[] = [];
   isLoggedIn: boolean;
 
   constructor(private cartService: CartService, private honeysService: HoneysService, private authService: AuthService,
@@ -22,7 +23,7 @@ export class HoneyItemsComponent implements OnInit {
 
   ngOnInit(): void {
     this.honeysService.getHoneysList().subscribe(x => {
-      this.honeys = x.body;      
+      this.honeys = x.body;
     });
     this.authService.currentUser.subscribe(x => {
       this.isLoggedIn = x !== null;
@@ -37,6 +38,10 @@ export class HoneyItemsComponent implements OnInit {
       const h: Honey = {id: honey.id, name: honey.name, amount: 1, price: honey.price };
       this.cartService.addToCart(h, this.authService.getCurrentUserValue().id).subscribe();
     }
+  }
+
+  createImgPath(serverPath: string){
+    return `https://localhost:5001/${serverPath}`;
   }
 
 }

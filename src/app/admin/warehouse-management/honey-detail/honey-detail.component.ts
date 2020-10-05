@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HoneysService } from 'src/app/services/honeys.service';
-import { Honey } from 'src/app/shared/honey';
+import { HoneyInTheWarehouse } from 'src/app/shared/honeyInTheWarehouse';
 
 @Component({
   selector: 'app-honey-detail',
@@ -12,9 +12,9 @@ export class HoneyDetailComponent implements OnInit {
 
   honeyId: number;
   err = false;
-  honey: Honey = new Honey();
+  honey: HoneyInTheWarehouse = new HoneyInTheWarehouse();
 
-  constructor(private route: ActivatedRoute, private router: Router, private honeysService: HoneysService) { }
+  constructor(private route: ActivatedRoute, private honeysService: HoneysService) { }
 
   ngOnInit(): void {
 
@@ -26,5 +26,9 @@ export class HoneyDetailComponent implements OnInit {
          });
        }
      );
+  }
+
+  createImgPath(){
+    return `https://localhost:5001/${this.honey.imgPath}`;
   }
    }
