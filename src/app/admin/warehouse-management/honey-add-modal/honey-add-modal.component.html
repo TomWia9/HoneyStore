@@ -13,17 +13,22 @@
         </div>
         <div class="form-group">
             <label for="inputPrice">Price</label>
-            <input formControlName="price" type="number" class="form-control" id="inputPrice" placeholder="Enter price of honey">
+            <input formControlName="price" type="number" class="form-control" id="inputPrice" placeholder="Enter a price of honey">
             <span *ngIf="!form.get('price').valid && form.get('price').touched" class="help-block text-danger">Please enter a honey price!</span>
 
         </div>
         <div class="form-group">
             <label for="inputAmount">Amount</label>
-            <input formControlName="amount" type="number" class="form-control" id="inputAmount" placeholder="Enter amount of honeys">
+            <input formControlName="amount" type="number" class="form-control" id="inputAmount" placeholder="Enter an amount of honeys">
             <span *ngIf="!form.get('amount').valid && form.get('amount').touched" class="help-block text-danger">Please enter an amount of honeys!</span>
         </div>
+        <div class="form-group">
+            <label for="inputDescription">Description</label>
+            <textarea formControlName="description" class="form-control" id="inputDescription" placeholder="Enter a description of honey"></textarea>
+            <span *ngIf="!form.get('description').valid && form.get('description').touched" class="help-block text-danger">Please enter a description of honey!</span>
+        </div>
         <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
-        <div *ngIf="(!form.valid || !uploaded) && form.get('amount').touched" class="card border-danger my-4 mx-auto" style="max-width: 18rem;">
+        <div *ngIf="(!form.valid || !uploaded) && form.get('description').touched" class="card border-danger my-4 mx-auto" style="max-width: 18rem;">
             <div class="card-header">Error</div>
             <div class="card-body text-danger">
                 <p class="card-text">Check that all fields are correctly completed and make sure that you've uploaded image</p>

@@ -1,25 +1,7 @@
 <div class="row">
     <ng-container *ngFor="let honey of honeys">
         <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-                <a href="#">
-                    <img class="card-img-top" [src]="createImgPath(honey.imgPath)" alt="">
-                </a>
-                <div class="card-body">
-                    <h4 class="card-title text-primary">
-                        {{ honey.name }}
-                    </h4>
-                    <h5>${{ honey.price }}</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                    <h6 class="text-success">In stock: {{honey.amount}}</h6>
-                </div>
-                <div class="card-footer text-center">
-                    <button class="btn btn-primary w-100 h-100" ngbPopover="Successfully added to the cart" placement="top" (click)="onAddToCart(honey)">
-                        <h6> Add to cart</h6>
-                        <fa-icon [icon]="faShoppingCart"></fa-icon>
-                    </button>
-                </div>
-            </div>
+            <app-honey-item-card [honey]="honey" [isLoggedIn]="isLoggedIn"></app-honey-item-card>
         </div>
     </ng-container>
 </div>

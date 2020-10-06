@@ -3,6 +3,7 @@ export class HoneyInTheWarehouse{
     name: string;
     amount: number;
     price: number;
+    description: string;
     imgPath: string;
     
 }

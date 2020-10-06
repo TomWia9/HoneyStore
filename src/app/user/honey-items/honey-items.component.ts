@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { Honey } from 'src/app/shared/honey';
-import { CartService } from 'src/app/services/cart.service';
 import { HoneysService } from 'src/app/services/honeys.service';
 import { AuthService } from 'src/app/auth/auth.service';
-import { Router } from '@angular/router';
 import { HoneyInTheWarehouse } from 'src/app/shared/honeyInTheWarehouse';
 
 @Component({
@@ -14,12 +10,10 @@ import { HoneyInTheWarehouse } from 'src/app/shared/honeyInTheWarehouse';
 })
 export class HoneyItemsComponent implements OnInit {
 
-  faShoppingCart = faShoppingCart;
   honeys: HoneyInTheWarehouse[] = [];
   isLoggedIn: boolean;
 
-  constructor(private cartService: CartService, private honeysService: HoneysService, private authService: AuthService,
-              private router: Router) { }
+  constructor(private honeysService: HoneysService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.honeysService.getHoneysList().subscribe(x => {
@@ -29,19 +23,4 @@ export class HoneyItemsComponent implements OnInit {
       this.isLoggedIn = x !== null;
     });
   }
-
-  onAddToCart(honey) {
-
-    if (!this.isLoggedIn) {
-      this.router.navigate(['/login']);
-    } else {
-      const h: Honey = {id: honey.id, name: honey.name, amount: 1, price: honey.price };
-      this.cartService.addToCart(h, this.authService.getCurrentUserValue().id).subscribe();
-    }
-  }
-
-  createImgPath(serverPath: string){
-    return `https://localhost:5001/${serverPath}`;
-  }
-
 }

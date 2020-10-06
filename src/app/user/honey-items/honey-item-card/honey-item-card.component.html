@@ -1,0 +1,30 @@
+<div class="card h-100">
+    <a href="#">
+        <img class="card-img-top honeyImg" [src]="createImgPath(honey.imgPath)" alt="">
+    </a>
+    <div class="card-body">
+        <h4 class="card-title text-primary">
+            {{ honey.name }}
+        </h4>
+        <h5>${{ honey.price }}</h5>
+        <p>
+            <button type="button" class="btn btn-outline-primary text-center" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+              Show description
+            </button>
+        </p>
+        <div id="collapseExample" [ngbCollapse]="isCollapsed">
+            <div class="card">
+                <div class="card-body">
+                    {{ honey.description }}
+                </div>
+            </div>
+        </div>
+        <h6 class="text-success">In stock: {{honey.amount}}</h6>
+    </div>
+    <div class="card-footer text-center">
+        <button class="btn btn-primary w-100 h-100" ngbPopover="Successfully added to the cart" placement="top" (click)="onAddToCart(honey)">
+            <h6> Add to cart</h6>
+            <fa-icon [icon]="faShoppingCart"></fa-icon>
+        </button>
+    </div>
+</div>

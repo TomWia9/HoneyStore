@@ -43,6 +43,7 @@ import { OrderModalComponent } from './shared/order-modal/order-modal.component'
 import { SettingsComponent } from './user/account-management/settings/settings.component';
 import { ChangeAddressModalComponent } from './user/change-address-modal/change-address-modal.component';
 import { UploadComponent } from './upload/upload.component';
+import { HoneyItemCardComponent } from './user/honey-items/honey-item-card/honey-item-card.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { UploadComponent } from './upload/upload.component';
     SettingsComponent,
     ChangeAddressModalComponent,
     UploadComponent,
+    HoneyItemCardComponent,
   ],
   imports: [
     BrowserModule,

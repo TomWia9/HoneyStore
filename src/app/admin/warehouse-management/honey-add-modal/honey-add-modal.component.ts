@@ -23,6 +23,7 @@ export class HoneyAddModalComponent implements OnInit {
       name: new FormControl(null, Validators.required),
       price: new FormControl(null, Validators.required),
       amount: new FormControl(null, Validators.required),
+      description: new FormControl(null, Validators.required),
     });
   }
 
@@ -34,6 +35,7 @@ export class HoneyAddModalComponent implements OnInit {
       name: this.form.value.name,
       price: this.form.value.price,
       amount: this.form.value.amount,
+      description: this.form.value.description,
       imgPath: this.response.dbPath
     };
     
