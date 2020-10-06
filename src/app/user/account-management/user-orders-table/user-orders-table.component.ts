@@ -46,4 +46,12 @@ export class UserOrdersTableComponent implements OnInit {
     const modalRef = this.modalService.open(OrderModalComponent, { size: 'xl', scrollable: true });
     modalRef.componentInstance.order = order;
   }
+
+  getDelivery(delivery: number) {
+    switch (delivery) {
+      case 0: {return 'Personal pickup'; }
+      case 1: {return 'Parcel locekr'; }
+      case 2: {return 'Courier';}
+    }
+}
 }

@@ -21,7 +21,7 @@
                         <td> {{ getStatus(order.status) }} </td>
                         <td>{{ order.client.firstName }} </td>
                         <td>{{ order.client.lastName }}</td>
-                        <td>{{ order.totalPrice | number }} </td>
+                        <td>${{ order.totalPrice | number }} </td>
                         <td> {{ order.date | date: 'short' }} </td>
                     </tr>
                 </tbody>
